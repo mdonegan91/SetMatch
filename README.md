@@ -1,70 +1,110 @@
+# 🎬 SetMatch 🎬
+
+### A React web application built with Firebase that helps film crews track their equipment and assets on set. Easily manage and monitor the inventory of all your gear, from cameras and lights to props and costumes.
+
+#### By: Molly Donegan
+
+<!-- #### 🎥 [Deployed Site](https://mdonegan91.github.io/BoyBoyBuilds-Inventory/) -->
+#### ⭐[Technologies Used](#technologies-used)
+#### 📺 [Components](#components)
+#### 🎞 [Setup / Installation](#setup-and-installation)
+#### 📽️ [Known Bugs](#known-bugs)
+#### 📼 [License](#license) 
+
+## Technologies Used
+* React
+* JavaScript / JSX
+* HTML / CSS
+* Babel
+* Bootstrap
+
+## Components
+
+<!-- ![mockup](/mockup.png) -->
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Setup and Installation
 
-In the project directory, you can run:
+Clone this project to your local machine by using the following command:
+```
+git clone https://github.com/mdonegan91/SetMatch
+```
 
-### `npm start`
+**Directions after cloning are as follows:**
+1. Open the `set-match` directory within your CLI.
+2. Install all Node packages and dependencies with the command `npm install`.
+3. Package and open the project in your browser using `npm run start`.
+4. Enjoy!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Known Bugs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* No known bugs
 
-### `npm test`
+## License
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**MIT License**
 
-### `npm run build`
+Copyright (c) 2023 Molly Donegan
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- Film Set Asset Tracker
+This is a web application built with React and Firebase that helps film crews track their equipment and assets on set. With this app, you can easily manage and monitor the inventory of all your gear, from cameras and lights to props and costumes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application allows users to create a new project and add assets to it. Each asset can have a name, description, category, and quantity. Users can also assign assets to specific locations, such as a sound stage or a dressing room, and track their status, whether they are in use, available, or need maintenance.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application has an intuitive user interface with responsive design and real-time updates, thanks to the Firebase Realtime Database. Users can view all their projects and assets on a dashboard and filter them by category, location, or status. They can also search for specific assets by name or ID.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application uses Firebase Authentication to secure user data and access. Users can create an account with their email and password or use Google or Facebook to sign in. The application also has role-based access control, with different levels of permissions for managers, supervisors, and crew members.
 
-## Learn More
+This project can be useful for film production companies, rental houses, or independent filmmakers who need to keep track of their equipment and inventory in a centralized and digital way. It can also serve as a starting point for developers who want to learn how to build a React application with Firebase and integrate real-time data, authentication, and security.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Features
+Create and manage projects
+Add, edit, and delete assets
+Assign assets to locations
+Track asset status (in use, available, maintenance)
+Filter and search assets by category, location, or status
+Real-time updates with Firebase Realtime Database
+Secure authentication with Firebase Authentication
+Role-based access control with different permissions
+Technologies
+React
+Firebase
+Realtime Database
+Authentication
+Bootstrap
+FontAwesome
+Installation
+Clone the repository: git clone https://github.com/yourusername/film-set-asset-tracker.git
+Install dependencies: npm install
+Create a Firebase project: https://console.firebase.google.com/
+Add a web app to your Firebase project and copy the configuration values to src/firebase.js
+Enable authentication with email/password and Google in Firebase console
+Create a Realtime Database in Firebase console and set up the rules to secure your data
+Run the application: npm start
+Contribution
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please create an issue or a pull request.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+License
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as you like. -->
