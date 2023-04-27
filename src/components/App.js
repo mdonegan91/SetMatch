@@ -8,12 +8,12 @@ class App extends React.Component {
     return (
       <div className="game-set-match">
         <div className="love-all">
-          <Header />
+          <Header tagline="Fresh Seafood Market"/>
+          </div>
           <OnSet />
           <Inventory />
         </div>
-      </div>
-    )
+    );
   }
 }
 

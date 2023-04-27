@@ -218,11 +218,11 @@ input[disabled] {
   cursor: default;
 }
 
-input[type=checkbox],
+/* input[type=checkbox],
 input[type=radio] {
   box-sizing: border-box;
   padding: 0;
-}
+} */
 
 input[type=search] {
   -webkit-appearance: textfield;
@@ -422,12 +422,12 @@ header.top h3:after {
   transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
 }
 
-input#fold:not(:checked)~#main .game-set-match>* {
+input#card:not(:checked)~#main .game-set-match>* {
   -webkit-transform: none;
   transform: none;
 }
 
-label[for="fold"] {
+label[for="card"] {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -440,11 +440,11 @@ label[for="fold"] {
   padding: 0.5rem 1rem;
 }
 
-input#fold {
+input#card {
   display: none;
 }
 
-input#fold:checked+label {
+input#card:checked+label {
   background: #fff;
   color: #000;
 }
