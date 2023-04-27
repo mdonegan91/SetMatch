@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="game-set-match">
         <div className="love-all">
-          <Header tagline="Fresh Seafood Market"/>
+          <Header tagline="All your assets in one place"/>
           </div>
           <OnSet />
           <Inventory />

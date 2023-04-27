@@ -181,9 +181,9 @@ img {
   border: 0;
 }
 
-svg:not(:root) {
+/* svg:not(:root) {
   overflow: hidden;
-}
+} */
 
 fieldset {
   border: 1px solid #c0c0c0;
@@ -329,15 +329,15 @@ header.top h1 .ofThe {
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  background: url("images/anchor.svg") center no-repeat;
-  background-size: cover;
+  background: url("images/racket.png") center no-repeat;
+  background-size: 60%;
   padding: 0 1rem;
 }
 
 header.top h1 .ofThe .of {
-  padding-right: 2rem;
+  padding-right: 3rem;
   position: relative;
-  right: -0.5rem;
+  right: -0.1rem;
 }
 
 header.top h3 {
@@ -512,7 +512,7 @@ ul.on-set li span.count span {
   text-align: center;
 }
 
-.fish-edit {
+.asset-edit {
   margin-bottom: 20px;
   border: 2px solid #000;
   overflow: hidden;
@@ -521,9 +521,9 @@ ul.on-set li span.count span {
   flex-wrap: wrap;
 }
 
-.fish-edit input,
-.fish-edit textarea,
-.fish-edit select {
+.asset-edit input,
+.asset-edit textarea,
+.asset-edit select {
   width: 33.33%;
   padding: 10px;
   line-height: 1;
@@ -538,27 +538,27 @@ ul.on-set li span.count span {
   background: #fff;
 }
 
-.fish-edit input:focus,
-.fish-edit textarea:focus,
-.fish-edit select:focus {
+.asset-edit input:focus,
+.asset-edit textarea:focus,
+.asset-edit select:focus {
   outline: 0;
   background: #fef2de;
 }
 
-.fish-edit textarea {
+.asset-edit textarea {
   width: 100%;
 }
 
-.fish-edit input:last-of-type {
+.asset-edit input:last-of-type {
   width: 100%;
 }
 
-.fish-edit button {
+.asset-edit button {
   width: 100%;
   border: 0;
 }
 
-.list-of-fish {
+.list-of-asset {
   border-top: 2px solid #000;
   border-bottom: 1px solid #000;
   padding-top: 5px;
@@ -567,7 +567,7 @@ ul.on-set li span.count span {
   transform: translateZ(0);
 }
 
-.love-all-fish {
+.love-all-asset {
   border-bottom: 2px solid #000;
   border-top: 1px solid #000;
   padding-bottom: 2rem;
@@ -577,12 +577,12 @@ ul.on-set li span.count span {
   overflow: hidden;
 }
 
-.love-all-fish p {
+.love-all-asset p {
   margin: 0;
   font-size: 1.8rem;
 }
 
-.love-all-fish .fish-name {
+.love-all-asset .asset-name {
   margin: 0;
   display: -webkit-box;
   display: flex;
@@ -592,13 +592,13 @@ ul.on-set li span.count span {
   align-items: center;
 }
 
-.love-all-fish .price {
+.love-all-asset .price {
   font-size: 1.4rem;
   -webkit-box-pack: end;
   justify-content: flex-end;
 }
 
-.love-all-fish img {
+.love-all-asset img {
   float: left;
   width: 150px;
   margin-right: 1rem;

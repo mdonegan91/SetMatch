@@ -3,8 +3,8 @@ import React from 'react';
 class SetPicker extends React.Component { 
   input = React.createRef();
   
-  goToSet = (event) => {
-    event.preventDefault();
+  goToSet = (e) => {
+    e.preventDefault();
     const setName = this.input.value;
   
   // push state changes the url without refreshing the page (react router)

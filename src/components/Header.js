@@ -3,12 +3,12 @@ import React from 'react';
 const Header = props => (
   <header className="top">
     <h1>
-      Catch
+      Set
       <span className="ofThe">
-        <span className="of">Of</span>
-        <span className="the">The</span>
+        <span className="of"></span>
+        <span className="the"></span>
       </span>
-      Day
+      Match
     </h1>
     <h3 className="tagline">
       <span>{props.tagline}</span>
