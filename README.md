@@ -18,6 +18,21 @@
 * Babel
 * Bootstrap
 
+## Notes:
+
+* react router vs. next.js to route exact?
+* helper methods!
+* componentDidMount
+* go through/clear out comments
+* re-read jordans email
+* real time database !!
+* samples - tired of adding fake data every time
+* search functionality?
+* turn onSet into Shop and Goldroom
+* Firebase Realtime Database For Web - Javascript:
+https://www.youtube.com/watch?v=N3Fmwf8ylrs&ab_channel=CandDev
+
+
 ## Components
 
 <!-- ![mockup](/mockup.png) -->
