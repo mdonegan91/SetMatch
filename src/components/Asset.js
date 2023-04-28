@@ -13,11 +13,10 @@ class Asset extends React.Component {
           <span className="price">{formatPrice(price)}</span>
         </h3>
         <p>{desc}</p>
-        <button
-          disabled={!isAvailable}
-          onClick={() => this.props.addToOrder(this.props.index)}
-          >
-          {isAvailable ? "Add To Order" : "Sold Out!"}
+        <button disabled={!isAvailable} onClick={() => this.props.addToOnSet(this.props.index)}>
+          {/* not making a function, just doing this once, in line */}
+          {isAvailable ? "Check Out" : "On Set!"}
+          {/* ternary operator */}
         </button>
       </li>
     );

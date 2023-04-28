@@ -1,21 +1,31 @@
 const assets = {
-  aset1: {
-    name: "Wilson US Open Racquet",
-    image: "/images/racquet.jpg",
+
+  asset1: {
+    name: "Three Plays by Margot Tenenbaum",
+    image: "/images/threeplays.jpg",
     desc:
-      "Pre-strung basalt carbon fiber composite double holes grommet technology",
-    price: 9900,
+      "Just a bunch of kids dressed up in animal costumes.",
+    price: 4438,
     status: "available"
   },
 
-asset2: {
-  name: "Pit Vipers",
-  image: "/images/pitvipers.jpg",
-  desc:
-    "VA & UVB Protection: 100% Light Transmission: 11-45% Lens: 1.2 mm Polycarbonate Look Thru Color: Blue/Grey",
-  price: 6969,
-  status: "unavailable"
-},
+  asset2: {
+    name: "Timer",
+    image: "/images/timer.jpg",
+    desc:
+      "Vintage industrial timer with buzzer",
+    price: 2500,
+    status: "available"
+  },
+
+  asset3: {
+    name: "Zebra Wallpaper",
+    image: "/images/wallpaper.jpg",
+    desc:
+      "100% Pressure Sensitive Coated Vinyl with Removable Backing",
+    price: 5000,
+    status: "unavailable"
+  },
 
 };
 

@@ -23,6 +23,13 @@ class App extends React.Component {
 
   loadSampleAssets = () => {
     this.setState({ assets: sampleAssets })
+  };
+
+  addToOnSet = (key) => {
+    const onSet = {...this.state.onSet};
+    onSet[key] = onSet[key] + 1 || 1;
+    // if onSet.fish1 exists, increment 1, otherwise, return 1
+    this.setState({ onSet });
   }
 
   render() {
@@ -31,10 +38,17 @@ class App extends React.Component {
         <div className="love-all">
           <Header tagline="All your assets in one place"/>
           <ul className="assets" >
-            {Object.keys(this.state.assets).map(key => <Asset key={key} details={this.state.assets[key]}/>)}
+            {Object.keys(this.state.assets).map(key => (
+            <Asset 
+            key={key}
+            index={key}
+            // passing key a second time as own prop
+            details={this.state.assets[key]}
+            addToOnSet={this.addToOnSet} />
+            ))}
           </ul>
           </div>
-          <OnSet />
+          <OnSet assets={this.state.assets} onSet={this.state.onSet}/>
           <Inventory addAsset={this.addAsset} loadSampleAssets={this.loadSampleAssets}/>
         </div>
     );
