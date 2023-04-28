@@ -4,12 +4,24 @@ import OnSet from './OnSet';
 import Inventory from './Inventory';
 import Asset from './Asset';
 import sampleAssets from '../sample-assets';
+import base from '../base';
 
 class App extends React.Component {
   state = {
     assets: {},
     onSet: {}
   };
+
+  componentDidMount() {
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.setId}/assets`, {
+      context: this,
+      state: "assets"
+    });
+  }
+  // ref is reference to piece of data
+  // componentDidMount = life cycle method like windowOnLoad
+  // descrtuctured this
 
   addAsset = (asset) => {
     // copy existing state
@@ -25,7 +37,7 @@ class App extends React.Component {
     this.setState({ assets: sampleAssets })
   };
 
-  addToOnSet = (key) => {
+  checkOut = (key) => {
     const onSet = {...this.state.onSet};
     onSet[key] = onSet[key] + 1 || 1;
     // if onSet.fish1 exists, increment 1, otherwise, return 1
@@ -44,7 +56,7 @@ class App extends React.Component {
             index={key}
             // passing key a second time as own prop
             details={this.state.assets[key]}
-            addToOnSet={this.addToOnSet} />
+            checkOut={this.checkOut} />
             ))}
           </ul>
           </div>

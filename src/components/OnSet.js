@@ -23,6 +23,7 @@ class OnSet extends React.Component {
       </li>
     );
   };
+  // each child in an array or iterator should have a unique key prop
 
   render() {
     const onSetIds = Object.keys(this.props.onSet);
