@@ -12,13 +12,13 @@ class App extends React.Component {
     onSet: {}
   };
 
-  componentDidMount() {
-    const { params } = this.props.match;
-    this.ref = base.syncState(`${params.setId}/assets`, {
-      context: this,
-      state: "assets"
-    });
-  }
+  // componentDidMount() {
+  //   const { params } = this.props.match;
+  //   this.ref = base.syncState(`${params.setId}/assets`, {
+  //     context: this,
+  //     state: "assets"
+  //   });
+  // }
   // ref is reference to piece of data
   // componentDidMount = life cycle method like windowOnLoad
   // descrtuctured this
