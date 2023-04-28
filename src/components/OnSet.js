@@ -9,7 +9,7 @@ class OnSet extends React.Component {
 
     if (!isAvailable) {
       return (
-        <li>
+        <li key={key}>
           Sorry {asset ? asset.name : 'asset'} is already checked out
         </li>
         // error handling
@@ -17,7 +17,7 @@ class OnSet extends React.Component {
     };
 
     return (
-      <li>
+      <li key={key}>
         {count} {asset.name}
         {formatPrice(count * asset.price)}
       </li>
