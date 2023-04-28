@@ -24,7 +24,7 @@ class AddAssetForm extends React.Component {
 
   render() {
     return (
-      <form class="asset-edit" onSubmit={this.createAsset}>
+      <form className="asset-edit" onSubmit={this.createAsset}>
         <input name="name" ref={this.nameRef} type="text" placeholder="Name" />
         <input name="price" ref={this.priceRef} type="text" placeholder="Price" />
         <select name="status" ref={this.statusRef} >

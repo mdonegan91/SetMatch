@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import OnSet from './OnSet';
 import Inventory from './Inventory';
+import Asset from './Asset';
+import sampleAssets from '../sample-assets';
 
 class App extends React.Component {
   state = {
@@ -19,14 +21,21 @@ class App extends React.Component {
     // passing piece of state we want to update. updating to assets taking our copied old assets to overwrite the existing state which will trigger a change in React and wherever they're displayed on the page. old and new are both called assets
   };
 
+  loadSampleAssets = () => {
+    this.setState({ assets: sampleAssets })
+  }
+
   render() {
     return (
       <div className="game-set-match">
         <div className="love-all">
           <Header tagline="All your assets in one place"/>
+          <ul className="assets" >
+            {Object.keys(this.state.assets).map(key => <Asset key={key} details={this.state.assets[key]}/>)}
+          </ul>
           </div>
           <OnSet />
-          <Inventory addAsset={this.addAsset}/>
+          <Inventory addAsset={this.addAsset} loadSampleAssets={this.loadSampleAssets}/>
         </div>
     );
   }
