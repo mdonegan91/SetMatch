@@ -5,8 +5,9 @@ class OnSet extends React.Component {
   renderOnSet = (key) => {
     const asset = this.props.assets[key];
     const count = this.props.onSet[key];
-    const isAvailable = asset.status;
-
+    const isAvailable = asset && asset.status === "available";
+    // make sure asset is loaded for local storage
+    if (!asset) return null;
     if (!isAvailable) {
       return (
         <li key={key}>
