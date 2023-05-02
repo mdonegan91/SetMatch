@@ -4,7 +4,7 @@
 
 #### By: Molly Donegan
 
-<!-- #### 🎥 [Deployed Site](https://mdonegan91.github.io/BoyBoyBuilds-Inventory/) -->
+<!-- #### 🎥 [Deployed Site](https://mdonegan91.github.io/SetMatch/) -->
 #### ⭐[Technologies Used](#technologies-used)
 #### 📺 [Components](#components)
 #### 🎞 [Setup / Installation](#setup-and-installation)
