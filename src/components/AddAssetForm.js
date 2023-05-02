@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddAssetForm extends React.Component {
   nameRef = React.createRef();
@@ -7,6 +8,9 @@ class AddAssetForm extends React.Component {
   descRef = React.createRef();
   imageRef = React.createRef();
 
+  static propTypes = {
+    addAsset: PropTypes.func
+  };
 
   createAsset = (e) => {
     e.preventDevault();

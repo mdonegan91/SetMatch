@@ -1,7 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { formatPrice } from "../helpers";
 
 class Asset extends React.Component {
+  static propTypes = {
+    details: PropTypes.shape({
+      image: PropTypes.string,
+      name: PropTypes.string,
+      desc: PropTypes.string,
+      status: PropTypes.string,
+      price: PropTypes.number,
+    }),
+    // shape function that accepts an object to we can specify all the properties
+    checkOut: PropTypes.func,
+  }
+  // ^^ declaring proptypes for all assets
   render() {
     const { image, name, price, desc, status } = this.props.details;
     const isAvailable = status === "available";

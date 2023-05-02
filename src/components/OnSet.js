@@ -1,7 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { formatPrice } from '../helpers';
 
 class OnSet extends React.Component {
+  static propTypes = {
+    assets: PropTypes.object,
+    onSet: PropTypes.object,
+    removeFromCheckOut: PropTypes.func
+  };
   renderOnSet = (key) => {
     const asset = this.props.assets[key];
     const count = this.props.onSet[key];
@@ -21,6 +27,7 @@ class OnSet extends React.Component {
       <li key={key}>
         {count} {asset.name}
         {formatPrice(count * asset.price)}
+        <button onClick={() => this.props.removeFromCheckOut(key)}>&times;</button>
       </li>
     );
   };

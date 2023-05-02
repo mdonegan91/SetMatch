@@ -1,13 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class SetPicker extends React.Component { 
+class SetPicker extends React.Component {
   input = React.createRef();
-  
+
+  static propTypes = {
+    history: PropTypes.object
+  };
+
   goToSet = (e) => {
     e.preventDefault();
     const setName = this.input.value;
-  
-  // push state changes the url without refreshing the page (react router)
+
+    // push state changes the url without refreshing the page (react router)
     this.props.history.push(`/set/${setName}`);
   };
 

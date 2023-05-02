@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import OnSet from './OnSet';
 import Inventory from './Inventory';
@@ -10,6 +11,10 @@ class App extends React.Component {
   state = {
     assets: {},
     onSet: {}
+  };
+
+  static propTypes = {
+    match: PropTypes.object
   };
 
   componentDidMount() {
@@ -86,6 +91,12 @@ class App extends React.Component {
     this.setState({ onSet });
   }
 
+  removeFromCheckOut = (key) => {
+    const onSet = { ...this.state.onSet };
+    delete onSet[key];
+    this.setState({ onSet });
+  }
+
   render() {
     return (
       <div className="game-set-match">
@@ -102,7 +113,11 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <OnSet assets={this.state.assets} onSet={this.state.onSet} />
+        <OnSet
+          assets={this.state.assets}
+          onSet={this.state.onSet}
+          removeFromCheckOut={this.removeFromCheckOut}
+        />
         <Inventory
           addAsset={this.addAsset}
           updateAsset={this.updateAsset}
