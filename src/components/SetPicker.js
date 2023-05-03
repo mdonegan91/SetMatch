@@ -5,7 +5,7 @@ class SetPicker extends React.Component {
   input = React.createRef();
 
   static propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object.isRequired
   };
 
   goToSet = (e) => {

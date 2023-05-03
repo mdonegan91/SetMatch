@@ -9,7 +9,7 @@ class AddAssetForm extends React.Component {
   imageRef = React.createRef();
 
   static propTypes = {
-    addAsset: PropTypes.func
+    addAsset: PropTypes.func.isRequired
   };
 
   createAsset = (e) => {

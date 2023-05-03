@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 class EditAssetForm extends React.Component {
   static propTypes = {
     asset: PropTypes.shape({
-      image: PropTypes.string,
-      name: PropTypes.string,
-      desc: PropTypes.string,
-      status: PropTypes.string,
-      price: PropTypes.number,
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired
     }),
-    index: PropTypes.string,
-    updateAsset: PropTypes.func
+    index: PropTypes.string.isRequired,
+    updateAsset: PropTypes.func.isRequired
   };
   handleChange = event => {
     // update the asset

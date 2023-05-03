@@ -5,11 +5,11 @@ import { formatPrice } from "../helpers";
 class Asset extends React.Component {
   static propTypes = {
     details: PropTypes.shape({
-      image: PropTypes.string,
-      name: PropTypes.string,
-      desc: PropTypes.string,
-      status: PropTypes.string,
-      price: PropTypes.number,
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired
     }),
     // shape function that accepts an object to we can specify all the properties
     checkOut: PropTypes.func,

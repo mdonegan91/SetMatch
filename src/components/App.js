@@ -14,7 +14,7 @@ class App extends React.Component {
   };
 
   static propTypes = {
-    match: PropTypes.object
+    match: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -124,6 +124,7 @@ class App extends React.Component {
           deleteAsset={this.deleteAsset}
           loadSampleAssets={this.loadSampleAssets}
           assets={this.state.assets}
+          setId={this.props.match.params.setId}
         />
       </div>
     );

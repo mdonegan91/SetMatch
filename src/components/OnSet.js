@@ -4,9 +4,9 @@ import { formatPrice } from '../helpers';
 
 class OnSet extends React.Component {
   static propTypes = {
-    assets: PropTypes.object,
-    onSet: PropTypes.object,
-    removeFromCheckOut: PropTypes.func
+    assets: PropTypes.object.isRequired,
+    onSet: PropTypes.object.isRequired,
+    removeFromCheckOut: PropTypes.func.isRequired
   };
   renderOnSet = (key) => {
     const asset = this.props.assets[key];
