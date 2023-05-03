@@ -10,7 +10,7 @@ class SetPicker extends React.Component {
 
   goToSet = (e) => {
     e.preventDefault();
-    const setName = this.input.value;
+    const setName = this.input.current.value;
 
     // push state changes the url without refreshing the page (react router)
     this.props.history.push(`/set/${setName}`);

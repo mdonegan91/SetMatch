@@ -19,9 +19,9 @@ class Asset extends React.Component {
     const { image, name, price, desc, status } = this.props.details;
     const isAvailable = status === "available";
     return (
-      <li className="menu-fish">
+      <li className="love-all-asset">
         <img src={image} alt={name} />
-        <h3 className="fish-name">
+        <h3 className="asset-name">
           {name}
           <span className="price">{formatPrice(price)}</span>
         </h3>
