@@ -47,7 +47,7 @@ class EditAssetForm extends React.Component {
           value={this.props.asset.status}
         >
           <option value="available">Warehouse</option>
-          <option value="unavailable">Shop</option>
+          <option value="unavailable">On Set</option>
         </select>
         <textarea
           name="desc"

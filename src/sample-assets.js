@@ -1,8 +1,8 @@
 const assets = {
 
   asset1: {
-    name: "Three Plays by Margot Tenenbaum",
-    image: "/images/threeplays.jpg",
+    name: "Three Plays",
+    image: "/images/threeplays.png",
     desc:
       "Just a bunch of kids dressed up in animal costumes.",
     price: 4438,

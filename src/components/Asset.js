@@ -28,7 +28,7 @@ class Asset extends React.Component {
         <p>{desc}</p>
         <button disabled={!isAvailable} onClick={() => this.props.checkOut(this.props.index)}>
           {/* not making a function, just doing this once, in line */}
-          {isAvailable ? "Check Out" : "On Set!"}
+          {isAvailable ? "Warehouse" : "On Set"}
           {/* ternary operator */}
         </button>
       </li>

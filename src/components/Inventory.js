@@ -86,7 +86,7 @@ authHandler = async authData => {
     }
     return (
       <div className="inventory">
-        <h2>Add Assets</h2>
+        {/* <h2>Assets</h2> */}
         {logout}
         {Object.keys(this.props.assets).map(key => (
           <EditAssetForm

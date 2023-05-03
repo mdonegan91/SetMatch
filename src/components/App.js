@@ -58,6 +58,8 @@ class App extends React.Component {
     this.setState({ assets });
   };
 
+  // was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path.
+
   updateAsset = (key, updatedAsset) => {
     // copy of the current state
     const assets = { ...this.state.assets };
@@ -66,8 +68,6 @@ class App extends React.Component {
     // set that to state
     this.setState({ assets });
   }
-
-  //was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path.
 
   deleteAsset = (key) => {
     // take copy of state
@@ -100,7 +100,8 @@ class App extends React.Component {
     return (
       <div className="game-set-match">
         <div className="love-all">
-          <Header tagline="All your assets in one place" />
+          <Header className="tagline" tagline="All your assets in one place" />
+          <br></br>
           <ul className="assets" >
             {Object.keys(this.state.assets).map(key => (
               <Asset
@@ -112,11 +113,11 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <OnSet
+        {/* <OnSet
           assets={this.state.assets}
           onSet={this.state.onSet}
           removeFromCheckOut={this.removeFromCheckOut}
-        />
+        /> */}
         <Inventory
           addAsset={this.addAsset}
           updateAsset={this.updateAsset}
