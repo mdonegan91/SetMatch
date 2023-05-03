@@ -52,13 +52,10 @@ class App extends React.Component {
   // ^^ stop listening for changes to avoid memory leak
 
   addAsset = (asset) => {
-    // copy existing state
     const assets = { ...this.state.assets };
-    // using milliseconds instead of IDs to add new asset to assets variable
-    assets[`asset${Date.now}`] = asset;
-    // set new assets object to state
+    const key = `asset_${Date.now()}_${Math.floor(Math.random() * 1000000)}`;
+    assets[key] = asset;
     this.setState({ assets });
-    // passing piece of state we want to update. updating to assets taking our copied old assets to overwrite the existing state which will trigger a change in React and wherever they're displayed on the page. old and new are both called assets
   };
 
   updateAsset = (key, updatedAsset) => {
@@ -69,6 +66,8 @@ class App extends React.Component {
     // set that to state
     this.setState({ assets });
   }
+
+  //was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path.
 
   deleteAsset = (key) => {
     // take copy of state

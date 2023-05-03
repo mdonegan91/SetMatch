@@ -13,7 +13,7 @@ class AddAssetForm extends React.Component {
   };
 
   createAsset = (e) => {
-    e.preventDevault();
+    e.preventDefault();
     const asset = {
       name: this.nameRef.current.value,
       price: parseFloat(this.priceRef.current.value),
