@@ -35,7 +35,7 @@ https://www.youtube.com/watch?v=N3Fmwf8ylrs&ab_channel=CandDev
 
 ## Components
 
-<!-- ![mockup](/mockup.png) -->
+![mockup](/mockup.png)
 
 # Getting Started with Create React App
 

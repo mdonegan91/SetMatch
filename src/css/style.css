@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background-image: url('./images/background.png');
+  background-image: url('./images/palm.png');
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
   font-size: 2rem;
@@ -78,7 +78,7 @@ header.top h3 {
 .game-set-match {
   display: flex;
   height: 85vh;
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
   margin-top: 5vh;
 }
@@ -147,6 +147,11 @@ ul {
   min-height: 100px;
 }
 
+.asset-edit input::placeholder,
+.asset-edit textarea::placeholder {
+  color: white;
+}
+
 .asset-edit button {
   align-self: flex-end;
   padding: 10px 20px;
@@ -206,6 +211,7 @@ input[type=submit] {
   font-size: 1.5rem;
   font-family: 'montserrat';
   padding: 1rem;
+  margin-top: 20px;
   cursor: pointer;
 }
 
@@ -243,6 +249,7 @@ input[type=submit].github:after {
   max-width: 600px;
   text-align: center;
   margin: 50px auto;
+  margin-top: 150px;
   padding: 3rem;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 3rem;
@@ -264,6 +271,11 @@ input[type=submit].github:after {
   font-family: 'montserrat', sans-serif;
 }
 
+.set-selector input::placeholder,
+.set-selector textarea::placeholder {
+  color: rgb(173, 171, 171);
+}
+
 footer {
   color: #fff;
   text-align: center;
@@ -277,4 +289,10 @@ footer {
 
 footer p {
   margin: 0.01rem;
+}
+
+@media (max-width: 767px) {
+  footer {
+    display: none;
+  }
 }
