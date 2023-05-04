@@ -1,38 +1,56 @@
 const assets = {
 
   asset1: {
-    name: "Olivetti Studio 44",
-    image: "/images/typewriter.png",
+    name: "Chesterfield Sofa",
+    image: "/images/sofa.png",
     desc:
-      "Original light blue typewriter with case",
-    tag: 51993,
+      "Vintage sofa in original brown leather",
+    tag: "bigs",
     status: "available"
   },
 
   asset2: {
-    name: "Timer",
-    image: "/images/timer.jpg",
+    name: "Longhorn",
+    image: "/images/longhorn.png",
     desc:
-      "Vintage industrial timer with buzzer",
-    tag: 2500,
+      "Golden storm longhorn skull",
+    tag: "artwork",
     status: "available"
   },
 
   asset3: {
-    name: "Zebra Wallpaper",
-    image: "/images/wallpaper.jpg",
+    name: "Opis 1921 Cable C",
+    image: "/images/phone.png",
     desc:
-      "100% Pressure Sensitive Coated Vinyl with Removable Backing",
-    tag: 5000,
+      "Wood candlestick telephone",
+    tag: "smalls",
     status: "unavailable"
   },
 
   asset4: {
-    name: "Three Plays",
-    image: "/images/threeplays.png",
+    name: "Tiffany Lamp",
+    image: "/images/tiffany.png",
     desc:
-      "Just a bunch of kids dressed up in animal costumes",
-    tag: 4438,
+      "Belle Fleur 3 Light 48 Billiard Light with Tiffany Glass",
+    tag: "fixtures",
+    status: "available"
+  },
+
+  asset5: {
+    name: "Needlepoint Throw Pillow",
+    image: "/images/pillow.png",
+    desc:
+      "Needlepoint Organic Wool Square Throw Pillow Cover & Insert",
+    tag: "soft goods",
+    status: "available"
+  },
+
+  asset6: {
+    name: "Black Forest Chair",
+    image: "/images/chair.png",
+    desc:
+      "Custom Western Royalty Recliner, Black Forest Decor",
+    tag: "bigs",
     status: "available"
   },
 

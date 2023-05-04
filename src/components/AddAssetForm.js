@@ -30,13 +30,13 @@ class AddAssetForm extends React.Component {
     return (
       <form className="asset-edit" onSubmit={this.createAsset}>
         <input name="name" ref={this.nameRef} type="text" placeholder="Name" />
-        <input name="tag" ref={this.tagRef} type="text" placeholder="tag" />
+        <input name="tag" ref={this.tagRef} type="text" placeholder="Tag" />
         <select name="status" ref={this.statusRef} >
           <option value="available">Warehouse</option>
           <option value="unavailable">On Set</option>
           <option value="unavailable">Gold Room</option>
         </select>
-        <textarea name="desc" ref={this.descRef} type="text" placeholder="Desc" />
+        <textarea name="desc" ref={this.descRef} type="text" placeholder="Desctription" />
         <input name="image" ref={this.imageRef} placeholder="Image" />
         <button type="submit">+ Add Asset</button>
       </form>
