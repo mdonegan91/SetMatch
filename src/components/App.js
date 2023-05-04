@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import OnSet from './OnSet';
 import Inventory from './Inventory';
 import Asset from './Asset';
 import sampleAssets from '../sample-assets';
 import base from '../base';
+import Footer from './Footer';
 
 class App extends React.Component {
   state = {
@@ -113,11 +113,6 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        {/* <OnSet
-          assets={this.state.assets}
-          onSet={this.state.onSet}
-          removeFromCheckOut={this.removeFromCheckOut}
-        /> */}
         <Inventory
           addAsset={this.addAsset}
           updateAsset={this.updateAsset}
@@ -126,6 +121,7 @@ class App extends React.Component {
           assets={this.state.assets}
           setId={this.props.match.params.setId}
         />
+        {/* <div><Footer /></div> */}
       </div>
     );
   }

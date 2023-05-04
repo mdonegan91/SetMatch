@@ -1,11 +1,11 @@
 const assets = {
 
   asset1: {
-    name: "Three Plays",
-    image: "/images/threeplays.png",
+    name: "Olivetti Studio 44",
+    image: "/images/typewriter.png",
     desc:
-      "Just a bunch of kids dressed up in animal costumes.",
-    price: 4438,
+      "Original light blue typewriter with case",
+    price: 51993,
     status: "available"
   },
 
@@ -25,6 +25,15 @@ const assets = {
       "100% Pressure Sensitive Coated Vinyl with Removable Backing",
     price: 5000,
     status: "unavailable"
+  },
+
+  asset4: {
+    name: "Three Plays",
+    image: "/images/threeplays.png",
+    desc:
+      "Just a bunch of kids dressed up in animal costumes",
+    price: 4438,
+    status: "available"
   },
 
 };

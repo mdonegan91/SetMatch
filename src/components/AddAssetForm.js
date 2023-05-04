@@ -33,8 +33,7 @@ class AddAssetForm extends React.Component {
         <input name="price" ref={this.priceRef} type="text" placeholder="Price" />
         <select name="status" ref={this.statusRef} >
           <option value="available">Warehouse</option>
-          <option value="unavailable">Shop</option>
-          <option value="unavailable">Gold Room</option>
+          <option value="unavailable">On Set</option>
         </select>
         <textarea name="desc" ref={this.descRef} type="text" placeholder="Desc" />
         <input name="image" ref={this.imageRef} placeholder="Image" />
