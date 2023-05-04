@@ -10,13 +10,33 @@ class Asset extends React.Component {
       status: PropTypes.string.isRequired,
       tag: PropTypes.string.isRequired
     }),
-    // shape function that accepts an object to we can specify all the properties
     checkOut: PropTypes.func,
   }
-  // ^^ declaring proptypes for all assets
+
+  // shape function that accepts an object to we can specify all the properties
+
   render() {
     const { image, name, tag, desc, status } = this.props.details;
     const isAvailable = status === "available";
+
+    let buttonText = "";
+    switch (status) {
+      case "warehouse":
+        buttonText = "Warehouse";
+        break;
+      case "shop":
+        buttonText = "Shop";
+        break;
+      case "goldroom":
+        buttonText = "Gold Room";
+        break;
+      case "onset":
+        buttonText = "On Set";
+        break;
+      default:
+        break;
+    }
+
     return (
       <li className="love-all-asset">
         <img src={image} alt={name} />
@@ -28,9 +48,7 @@ class Asset extends React.Component {
         </h3>
         <p>{desc}</p>
         <button disabled={!isAvailable} onClick={() => this.props.checkOut(this.props.index)}>
-          {/* not making a function, just doing this once, in line */}
-          {isAvailable ? "Warehouse" : "On Set"}
-          {/* ternary operator */}
+          {buttonText}
         </button>
       </li>
     );

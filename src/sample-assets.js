@@ -6,7 +6,7 @@ const assets = {
     desc:
       "Vintage sofa in original brown leather",
     tag: "bigs",
-    status: "available"
+    status: "warehouse"
   },
 
   asset2: {
@@ -15,7 +15,7 @@ const assets = {
     desc:
       "Golden storm longhorn skull",
     tag: "artwork",
-    status: "available"
+    status: "shop"
   },
 
   asset3: {
@@ -24,7 +24,7 @@ const assets = {
     desc:
       "Wood candlestick telephone",
     tag: "smalls",
-    status: "unavailable"
+    status: "goldroom"
   },
 
   asset4: {
@@ -33,7 +33,7 @@ const assets = {
     desc:
       "Belle Fleur 3 Light 48 Billiard Light with Tiffany Glass",
     tag: "fixtures",
-    status: "available"
+    status: "onset"
   },
 
   asset5: {
@@ -42,7 +42,7 @@ const assets = {
     desc:
       "Needlepoint Organic Wool Square Throw Pillow Cover & Insert",
     tag: "soft goods",
-    status: "available"
+    status: "warehouse"
   },
 
   asset6: {
@@ -51,7 +51,7 @@ const assets = {
     desc:
       "Custom Western Royalty Recliner, Black Forest Decor",
     tag: "bigs",
-    status: "available"
+    status: "warehouse"
   },
 
 };

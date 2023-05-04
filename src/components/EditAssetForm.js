@@ -46,9 +46,10 @@ class EditAssetForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.asset.status}
         >
-          <option value="available">Warehouse</option>
-          <option value="unavailable">On Set</option>
-          <option value="unavailable">Gold Room</option>
+          <option value="warehouse">Warehouse</option>
+          <option value="shop">Shop</option>
+          <option value="goldroom">Gold Room</option>
+          <option value="onset">On Set</option>
         </select>
         <textarea
           name="desc"
