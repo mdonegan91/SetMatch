@@ -8,7 +8,7 @@ class EditAssetForm extends React.Component {
       name: PropTypes.string.isRequired,
       desc: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired
+      tag: PropTypes.string.isRequired
     }),
     index: PropTypes.string.isRequired,
     updateAsset: PropTypes.func.isRequired
@@ -36,9 +36,9 @@ class EditAssetForm extends React.Component {
         />
         <input
           type="text"
-          name="price"
+          name="tag"
           onChange={this.handleChange}
-          value={this.props.asset.price}
+          value={this.props.asset.tag}
         />
         <select
           type="text"
@@ -48,6 +48,7 @@ class EditAssetForm extends React.Component {
         >
           <option value="available">Warehouse</option>
           <option value="unavailable">On Set</option>
+          <option value="unavailable">Gold Room</option>
         </select>
         <textarea
           name="desc"

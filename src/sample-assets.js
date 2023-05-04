@@ -5,7 +5,7 @@ const assets = {
     image: "/images/typewriter.png",
     desc:
       "Original light blue typewriter with case",
-    price: 51993,
+    tag: 51993,
     status: "available"
   },
 
@@ -14,7 +14,7 @@ const assets = {
     image: "/images/timer.jpg",
     desc:
       "Vintage industrial timer with buzzer",
-    price: 2500,
+    tag: 2500,
     status: "available"
   },
 
@@ -23,7 +23,7 @@ const assets = {
     image: "/images/wallpaper.jpg",
     desc:
       "100% Pressure Sensitive Coated Vinyl with Removable Backing",
-    price: 5000,
+    tag: 5000,
     status: "unavailable"
   },
 
@@ -32,7 +32,7 @@ const assets = {
     image: "/images/threeplays.png",
     desc:
       "Just a bunch of kids dressed up in animal costumes",
-    price: 4438,
+    tag: 4438,
     status: "available"
   },
 

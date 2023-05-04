@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatPrice } from '../helpers';
 
 class OnSet extends React.Component {
   static propTypes = {
@@ -26,7 +25,6 @@ class OnSet extends React.Component {
     return (
       <li key={key}>
         {count} {asset.name}
-        {formatPrice(count * asset.price)}
         <button onClick={() => this.props.removeFromCheckOut(key)}>&times;</button>
       </li>
     );
@@ -39,10 +37,6 @@ class OnSet extends React.Component {
       const asset = this.props.assets[key];
       const count = this.props.onSet[key];
       const isAvailable = asset && asset.status === 'available';
-      if (isAvailable) {
-        return prevTotal + (count * asset.price);
-      }
-      return prevTotal;
     }, 0);
     // reduce = tally
     // start at 0 !
@@ -54,7 +48,7 @@ class OnSet extends React.Component {
       </ul>
       <div className="total">
         Total:
-        <strong>{formatPrice(total)}</strong>
+        <strong>{formattag(total)}</strong>
       </div>
     </div>
   }

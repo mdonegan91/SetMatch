@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { formatPrice } from "../helpers";
 
 class Asset extends React.Component {
   static propTypes = {
@@ -9,21 +8,23 @@ class Asset extends React.Component {
       name: PropTypes.string.isRequired,
       desc: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired
+      tag: PropTypes.string.isRequired
     }),
     // shape function that accepts an object to we can specify all the properties
     checkOut: PropTypes.func,
   }
   // ^^ declaring proptypes for all assets
   render() {
-    const { image, name, price, desc, status } = this.props.details;
+    const { image, name, tag, desc, status } = this.props.details;
     const isAvailable = status === "available";
     return (
       <li className="love-all-asset">
         <img src={image} alt={name} />
         <h3 className="asset-name">
           {name}
-          <span className="price">{formatPrice(price)}</span>
+          <span className="tag">
+            {tag}
+            </span>
         </h3>
         <p>{desc}</p>
         <button disabled={!isAvailable} onClick={() => this.props.checkOut(this.props.index)}>
