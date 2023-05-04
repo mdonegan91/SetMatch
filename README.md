@@ -32,7 +32,7 @@
 https://www.youtube.com/watch?v=N3Fmwf8ylrs&ab_channel=CandDev
 
 
-## Components
+## Mockups
 
 ![mockup](/mockup1.png)
 ![mockup](/mockup2.png)
