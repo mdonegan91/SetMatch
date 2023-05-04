@@ -41,7 +41,7 @@ h1 {
   margin: 0;
   color: white;
   font-style: italic;
-  text-shadow: 4px 4px rgb(204,204,255);
+  text-shadow: 4px 4px rgb(204, 204, 255);
 }
 
 .tagline {
@@ -74,9 +74,10 @@ header.top h3 {
   color: white;
 }
 
+
 .game-set-match {
   display: flex;
-  height: 90vh;
+  height: 85vh;
   max-width: 1300px;
   margin: 0 auto;
   margin-top: 5vh;
@@ -91,13 +92,8 @@ header.top h3 {
   border-radius: 10px;
 }
 
-.game-set-match > *::-webkit-scrollbar {
-  width: 10px;
-  background-color: transparent;
-}
-
-.game-set-match > *::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
+.game-set-match>*::-webkit-scrollbar {
+  display: none;
 }
 
 .game-set-match>*:first-child {
@@ -126,7 +122,6 @@ ul {
 }
 
 .asset-edit {
-  margin-bottom: 20px;
   margin-top: 20px;
   padding: 20px;
   background-color: rgba(245, 245, 245, .05);
@@ -141,7 +136,6 @@ ul {
 .asset-edit select {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
   font-size: 1.5rem;
   border: none;
   color: white;
@@ -254,10 +248,10 @@ input[type=submit].github:after {
   padding: 3rem;
   border-radius: 10px;
   font-family: 'montserrat', sans-serif;
-  }
-  
-  .set-selector input[type="text"],
-  .set-selector button[type="text"] {
+}
+
+.set-selector input[type="text"],
+.set-selector button[type="text"] {
   width: 100%;
   margin-bottom: 2.5rem;
   padding: 1rem;
@@ -268,21 +262,19 @@ input[type=submit].github:after {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-family: 'montserrat', sans-serif;
-  }
+}
 
-  footer {
-    background-color: rgba(204,204,255, 0.1);
-    color: #fff;
-    padding: 1rem 2rem;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  footer p {
-    margin: 1px;
-  }
+footer {
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer p {
+  margin: 0.01rem;
+}

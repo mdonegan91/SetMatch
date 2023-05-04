@@ -109,7 +109,8 @@ class App extends React.Component {
                 index={key}
                 // passing key a second time as own prop
                 details={this.state.assets[key]}
-                checkOut={this.checkOut} />
+                checkOut={this.checkOut}
+              />
             ))}
           </ul>
         </div>
@@ -120,8 +121,9 @@ class App extends React.Component {
           loadSampleAssets={this.loadSampleAssets}
           assets={this.state.assets}
           setId={this.props.match.params.setId}
+          className="inventory"
         />
-        {/* <div><Footer /></div> */}
+        <Footer />
       </div>
     );
   }
