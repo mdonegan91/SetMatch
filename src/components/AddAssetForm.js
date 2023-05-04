@@ -37,7 +37,7 @@ class AddAssetForm extends React.Component {
           <option value="goldroom">Gold Room</option>
           <option value="onset">On Set</option>
         </select>
-        <textarea name="desc" ref={this.descRef} type="text" placeholder="Desctription" />
+        <textarea name="desc" ref={this.descRef} type="text" placeholder="Description" />
         <input name="image" ref={this.imageRef} placeholder="Image" />
         <button type="submit">+ Add Asset</button>
       </form>

@@ -13,10 +13,9 @@
 
 ## Technologies Used
 * React
+* Firebase / Realtime Database
 * JavaScript / JSX
 * HTML / CSS
-* Babel
-* Bootstrap
 
 ## Notes:
 
@@ -35,7 +34,8 @@ https://www.youtube.com/watch?v=N3Fmwf8ylrs&ab_channel=CandDev
 
 ## Components
 
-![mockup](/mockup.png)
+![mockup](/mockup1.png)
+![mockup](/mockup2.png)
 
 # Getting Started with Create React App
 
@@ -81,45 +81,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-<!-- Film Set Asset Tracker
-This is a web application built with React and Firebase that helps film crews track their equipment and assets on set. With this app, you can easily manage and monitor the inventory of all your gear, from cameras and lights to props and costumes.
-
-The application allows users to create a new project and add assets to it. Each asset can have a name, description, category, and quantity. Users can also assign assets to specific locations, such as a sound stage or a dressing room, and track their status, whether they are in use, available, or need maintenance.
-
-The application has an intuitive user interface with responsive design and real-time updates, thanks to the Firebase Realtime Database. Users can view all their projects and assets on a dashboard and filter them by category, location, or status. They can also search for specific assets by name or ID.
-
-The application uses Firebase Authentication to secure user data and access. Users can create an account with their email and password or use Google or Facebook to sign in. The application also has role-based access control, with different levels of permissions for managers, supervisors, and crew members.
-
-This project can be useful for film production companies, rental houses, or independent filmmakers who need to keep track of their equipment and inventory in a centralized and digital way. It can also serve as a starting point for developers who want to learn how to build a React application with Firebase and integrate real-time data, authentication, and security.
-
-Features
-Create and manage projects
-Add, edit, and delete assets
-Assign assets to locations
-Track asset status (in use, available, maintenance)
-Filter and search assets by category, location, or status
-Real-time updates with Firebase Realtime Database
-Secure authentication with Firebase Authentication
-Role-based access control with different permissions
-Technologies
-React
-Firebase
-Realtime Database
-Authentication
-Bootstrap
-FontAwesome
-Installation
-Clone the repository: git clone https://github.com/yourusername/film-set-asset-tracker.git
-Install dependencies: npm install
-Create a Firebase project: https://console.firebase.google.com/
-Add a web app to your Firebase project and copy the configuration values to src/firebase.js
-Enable authentication with email/password and Google in Firebase console
-Create a Realtime Database in Firebase console and set up the rules to secure your data
-Run the application: npm start
-Contribution
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please create an issue or a pull request.
-
-License
-This project is licensed under the MIT License. Feel free to use, modify, and distribute it as you like. -->
