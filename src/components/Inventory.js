@@ -87,6 +87,7 @@ authHandler = async authData => {
     return (
       <div className="inventory">
         {logout}
+        <AddAssetForm addAsset={this.props.addAsset} />
         {Object.keys(this.props.assets).map(key => (
           <EditAssetForm
             key={key}
@@ -98,7 +99,6 @@ authHandler = async authData => {
           // passing props down
           />
         ))}
-        <AddAssetForm addAsset={this.props.addAsset} />
         <button onClick={this.props.loadSampleAssets}>Load Sample Assets</button>
       </div>
     );
