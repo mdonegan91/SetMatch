@@ -41,6 +41,7 @@ class EditAssetForm extends React.Component {
           value={this.props.asset.tag}
         >
           <option value="smalls">Smalls</option>
+          <option value="smalls">Bigs</option>
           <option value="artwork">Artwork</option>
           <option value="fixtures">Fixtures</option>
           <option value="softgoods">Soft Goods</option>

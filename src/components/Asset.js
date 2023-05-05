@@ -37,6 +37,27 @@ class Asset extends React.Component {
         break;
     }
 
+    // let tagText = "";
+    // switch (status) {
+    //   case "smalls":
+    //     buttonText = "Smalls";
+    //     break;
+    //     case "bigs":
+    //     buttonText = "bigs";
+    //     break;
+    //   case "artwork":
+    //     buttonText = "Artwork";
+    //     break;
+    //   case "fixtures":
+    //     buttonText = "Fixtures";
+    //     break;
+    //   case "softgoods":
+    //     buttonText = "Soft Goods";
+    //     break;
+    //   default:
+    //     break;
+    // }
+
     return (
       <li className="love-all-asset">
         <img src={image} alt={name} />

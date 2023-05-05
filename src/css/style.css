@@ -203,9 +203,7 @@ ul {
 .love-all-asset img {
   float: left;
   width: 10%;
-  aspect-ratio: 1/2;
   object-fit: contain;
-  /* mix-blend-mode: color-dodge; */
   margin-bottom: 1rem;
   margin-right: 2rem;
 }

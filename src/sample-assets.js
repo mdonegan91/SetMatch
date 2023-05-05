@@ -1,6 +1,6 @@
 const assets = {
 
-  asset1: {
+  asset3: {
     name: "Chesterfield Sofa",
     image: "/images/sofa.png",
     desc:
@@ -9,7 +9,7 @@ const assets = {
     status: "warehouse"
   },
 
-  asset2: {
+  asset4: {
     name: "Longhorn",
     image: "/images/longhorn.png",
     desc:
@@ -18,7 +18,7 @@ const assets = {
     status: "shop"
   },
 
-  asset3: {
+  asset1: {
     name: "Opis 1921 Cable C",
     image: "/images/phone.png",
     desc:
@@ -27,7 +27,7 @@ const assets = {
     status: "goldroom"
   },
 
-  asset4: {
+  asset2: {
     name: "Tiffany Lamp",
     image: "/images/tiffany.png",
     desc:
