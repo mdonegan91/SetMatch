@@ -34,12 +34,17 @@ class EditAssetForm extends React.Component {
           onChange={this.handleChange}
           value={this.props.asset.name}
         />
-        <input
+        <select
           type="text"
           name="tag"
           onChange={this.handleChange}
           value={this.props.asset.tag}
-        />
+        >
+          <option value="smalls">Smalls</option>
+          <option value="artwork">Artwork</option>
+          <option value="fixtures">Fixtures</option>
+          <option value="softgoods">Soft Goods</option>
+          </select>
         <select
           type="text"
           name="status"
