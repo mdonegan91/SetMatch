@@ -10,7 +10,15 @@ const firebaseApp = firebase.initializeApp({
   databaseURL: "https://setmatch-1eb90-default-rtdb.firebaseio.com",
 });
 
+
+export const auth = firebase.auth();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+
 const base = Rebase.createClass(firebaseApp.database());
+
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 // named export
 export { firebaseApp };
