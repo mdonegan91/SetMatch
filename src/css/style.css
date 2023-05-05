@@ -197,6 +197,7 @@ ul {
 .love-all-asset .tag {
   font-size: 1.4rem;
   justify-content: flex-end;
+  text-transform: uppercase;
 }
 
 .love-all-asset img {
