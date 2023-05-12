@@ -23,7 +23,7 @@ SetMatch uses the NoSQL cloud-hosted database Firebase for user authentication a
 
 ## Mockups
 
-
+![mockup](/mockup1.png)
 ![mockup](/mockup2.png)
 
 # Getting Started with Create React App
