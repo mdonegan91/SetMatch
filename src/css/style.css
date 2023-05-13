@@ -29,6 +29,7 @@ html {
 
 body {
   background-image: url('./images/western.jpeg');
+  background-color: black;
   background-size: cover;
   font-family: 'Open Sans', sans-serif;
   font-size: 2rem;
