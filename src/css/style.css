@@ -84,8 +84,8 @@ header.top h3 {
   margin-top: 5vh;
 }
 
-.game-set-match>* {
-  flex: 1 4 auto;
+.game-set-match > * {
+  flex: 1;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.15);
   overflow: scroll;
@@ -97,9 +97,11 @@ header.top h3 {
   display: none;
 }
 
-.game-set-match>*:first-child {
+.game-set-match > *:first-child {
   flex-basis: 50%;
+  margin-right: 2rem;
 }
+
 
 @media only screen and (max-width: 767px) {
   .game-set-match {

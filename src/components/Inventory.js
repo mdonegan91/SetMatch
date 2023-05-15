@@ -1,59 +1,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 import AddAssetForm from './AddAssetForm';
-import Asset from './Asset';
+import EditAssetForm from './EditAssetForm';
+import Login from './Login';
+import base, { firebaseApp } from "../base";
 
 class Inventory extends React.Component {
   static propTypes = {
-    addAsset: PropTypes.func.isRequired,
+    assets: PropTypes.object.isRequired,
     updateAsset: PropTypes.func.isRequired,
     deleteAsset: PropTypes.func.isRequired,
-    loadSampleAssets: PropTypes.func.isRequired,
-    assets: PropTypes.object.isRequired,
-    setId: PropTypes.string.isRequired
+    loadSampleAssets: PropTypes.func.isRequired
   };
 
   state = {
-    selectedStatus: '' // Initially no status is selected
+    uid: null,
+    owner: null
   };
 
-  handleStatusChange = (event) => {
-    const selectedStatus = event.target.value;
-    this.setState({ selectedStatus });
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.authHandler({ user });
+      }
+    });
+  }
+    // this keeps our URL from heading to undefined
+    //loading is true would prevent that flash but leaving it out for now... 
+
+authHandler = async authData => {
+  // look up current set in firebase database:
+  const set = await base.fetch(this.props.setId, { context: this });
+  console.log(set);
+  // claim it if there is no owner:
+  if (!set.owner) {
+    // save it as our own
+    await base.post(`${this.props.setId}/owner`, {
+      data: authData.user.uid
+    })
+  }
+  // set the state of the inventory component to reflect current user:
+  this.setState({
+    uid: authData.user.uid,
+    owner: set.owner || authData.user.uid
+  });
+  console.log(authData);
+};
+// figuring out who is currently logged in and who is the owner of the set. if they're the same people they can manage the set
+// fetch returns promise, add await to return set instead of promise
+
+  authenticate = provider => {
+    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+    firebaseApp
+      .auth()
+      .signInWithPopup(authProvider)
+      .then(this.authHandler);
   };
+  //dynamic auth provider to maybe incorporate multiple auths
+
+  logout = async () => {
+    console.log('logging out');
+    await firebase.auth().signOut();
+    this.setState({ uid: null })
+  }
+  // async method so they can actually sign out of firebase
+  // and clear state
 
   render() {
-    const { assets, addAsset, updateAsset, deleteAsset, loadSampleAssets } = this.props;
-    const { selectedStatus } = this.state;
+    // return <Login authenticate={this.authenticate}/>;
+    const logout = <button onClick={this.logout}>Log Out</button>;
+    // 1. Check if they are logged in
+    if (!this.state.uid) {
+      return <Login authenticate={this.authenticate} />;
+    }
 
-    // Filter assets based on the selected status
-    const filteredAssets = selectedStatus ? 
-      Object.values(assets).filter(asset => asset.status === selectedStatus) : 
-      Object.values(assets);
-
+    // 2. check if they are not the owner of the store
+    if (this.state.uid !== this.state.owner) {
+      return (
+        <div>
+          <p>Sorry you are not the owner!</p>
+          {logout}
+        </div>
+      );
+    }
     return (
       <div className="inventory">
-        <h2>Inventory</h2>
-        <div className="status-filter">
-          <select value={selectedStatus} onChange={this.handleStatusChange}>
-            <option value="">All</option>
-            <option value="warehouse">Warehouse</option>
-            <option value="shop">Shop</option>
-            <option value="goldroom">Gold Room</option>
-            <option value="onset">On Set</option>
-          </select>
-        </div>
-        <ul className="assets">
-          {filteredAssets.map(asset => (
-            <Asset
-              key={asset.id}
-              details={asset}
-              checkOut={this.props.checkOut}
-            />
-          ))}
-        </ul>
-        <AddAssetForm addAsset={addAsset} />
-        <button onClick={loadSampleAssets}>Load Sample Assets</button>
+        {logout}
+        <AddAssetForm addAsset={this.props.addAsset} />
+        {Object.keys(this.props.assets).map(key => (
+          <EditAssetForm
+            key={key}
+            index={key}
+            // passing index down here to use in EditAssetForm
+            asset={this.props.assets[key]}
+            updateAsset={this.props.updateAsset}
+            deleteAsset={this.props.deleteAsset}
+          // passing props down
+          />
+        ))}
+        <button onClick={this.props.loadSampleAssets}>Load Sample Assets</button>
       </div>
     );
   }

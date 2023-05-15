@@ -7,16 +7,11 @@ import sampleAssets from '../sample-assets';
 import base from '../base';
 import Footer from './Footer';
 
-
-
 class App extends React.Component {
   state = {
     assets: {},
-    onSet: {},
-    selectedStatus: ''
+    onSet: {}
   };
-
-  
 
   static propTypes = {
     match: PropTypes.object.isRequired
@@ -102,22 +97,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { assets, selectedStatus } = this.state;
-    const filteredAssets = selectedStatus
-      ? Object.keys(assets).filter(key => assets[key].status === selectedStatus)
-      : Object.keys(assets);
-
     return (
       <div className="game-set-match">
         <div className="love-all">
           <Header className="tagline" tagline="All your assets in one place" />
           <br></br>
-          <ul className="assets">
-            {filteredAssets.map(key => (
+          <ul className="assets" >
+            {Object.keys(this.state.assets).map(key => (
               <Asset
                 key={key}
                 index={key}
-                details={assets[key]}
+                // passing key a second time as own prop
+                details={this.state.assets[key]}
                 checkOut={this.checkOut}
               />
             ))}
@@ -128,10 +119,8 @@ class App extends React.Component {
           updateAsset={this.updateAsset}
           deleteAsset={this.deleteAsset}
           loadSampleAssets={this.loadSampleAssets}
-          assets={assets}
+          assets={this.state.assets}
           setId={this.props.match.params.setId}
-          selectedStatus={selectedStatus}
-          handleStatusChange={this.handleStatusChange}
           className="inventory"
         />
         <Footer />
