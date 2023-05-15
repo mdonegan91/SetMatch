@@ -26,6 +26,11 @@ class AddAssetForm extends React.Component {
     // reset method to clear form
   };
 
+  handleStatusChange = (e) => {
+    const selectedStatus = e.target.value;
+    this.setState({ selectedStatus });
+  };
+
   render() {
     return (
       <form className="asset-edit" onSubmit={this.createAsset}>
@@ -37,7 +42,7 @@ class AddAssetForm extends React.Component {
           <option value="fixtures">Fixtures</option>
           <option value="softgoods">Soft Goods</option>
         </select>
-        <select name="status" ref={this.statusRef} >
+        <select name="status" ref={this.statusRef} onChange={this.handleStatusChange}>
           <option value="warehouse">Warehouse</option>
           <option value="shop">Shop</option>
           <option value="goldroom">Gold Room</option>

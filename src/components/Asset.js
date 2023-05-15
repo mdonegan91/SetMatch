@@ -11,9 +11,7 @@ class Asset extends React.Component {
       tag: PropTypes.string.isRequired
     }),
     checkOut: PropTypes.func,
-  }
-
-  // shape function that accepts an object to we can specify all the properties
+  };
 
   render() {
     const { image, name, tag, desc, status } = this.props.details;
@@ -37,35 +35,12 @@ class Asset extends React.Component {
         break;
     }
 
-    // let tagText = "";
-    // switch (status) {
-    //   case "smalls":
-    //     buttonText = "Smalls";
-    //     break;
-    //     case "bigs":
-    //     buttonText = "bigs";
-    //     break;
-    //   case "artwork":
-    //     buttonText = "Artwork";
-    //     break;
-    //   case "fixtures":
-    //     buttonText = "Fixtures";
-    //     break;
-    //   case "softgoods":
-    //     buttonText = "Soft Goods";
-    //     break;
-    //   default:
-    //     break;
-    // }
-
     return (
       <li className="love-all-asset">
         <img src={image} alt={name} />
         <h3 className="asset-name">
           {name}
-          <span className="tag">
-            {tag}
-            </span>
+          <span className="tag">{tag}</span>
         </h3>
         <p>{desc}</p>
         <button disabled={!isAvailable} onClick={() => this.props.checkOut(this.props.index)}>
