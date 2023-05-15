@@ -10,7 +10,8 @@ import Footer from './Footer';
 class App extends React.Component {
   state = {
     assets: {},
-    onSet: {}
+    onSet: {},
+    selectedTag: null
   };
 
   static propTypes = {
@@ -96,19 +97,39 @@ class App extends React.Component {
     this.setState({ onSet });
   }
 
+  handleTagChange = (e) => {
+    const selectedTag = e.target.value;
+    this.setState({ selectedTag });
+  };
+
   render() {
+    const { selectedTag } = this.state;
+    const filteredAssets = Object.values(this.state.assets).filter(asset => {
+      if (!selectedTag) {
+        return true; // Show all assets if no tag is selected
+      }
+      return asset.tag === selectedTag; // Show assets with selected tag
+    });
     return (
       <div className="game-set-match">
         <div className="love-all">
           <Header className="tagline" tagline="All your assets in one place" />
           <br></br>
-          <ul className="assets" >
-            {Object.keys(this.state.assets).map(key => (
+          <select name="tag" className="asset-filter" ref={this.tagRef} onChange={this.handleTagChange}>
+            <option value="">Show All</option> {/* Add an option to show all assets */}
+            <option value="bigs">Bigs</option>
+            <option value="smalls">Smalls</option>
+            <option value="artwork">Artwork</option>
+            <option value="fixtures">Fixtures</option>
+            <option value="softgoods">Soft Goods</option>
+          </select>
+          <br></br><br></br><br></br>
+          <ul className="assets">
+            {filteredAssets.map((asset, index) => (
               <Asset
-                key={key}
-                index={key}
-                // passing key a second time as own prop
-                details={this.state.assets[key]}
+                key={index}
+                index={index}
+                details={asset}
                 checkOut={this.checkOut}
               />
             ))}
