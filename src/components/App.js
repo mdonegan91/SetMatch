@@ -108,7 +108,7 @@ class App extends React.Component {
       if (!selectedTag) {
         return true; // Show all assets if no tag is selected
       }
-      return asset.tag === selectedTag; // Show assets with selected tag
+      return asset.tag.toLowerCase() === selectedTag.toLowerCase(); // Case-insensitive comparison
     });
     return (
       <div className="game-set-match">

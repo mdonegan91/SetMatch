@@ -41,7 +41,7 @@ const assets = {
     image: "/images/pillow.png",
     desc:
       "Needlepoint Organic Wool Square Throw Pillow Cover & Insert",
-    tag: "Soft Goods",
+    tag: "SoftGoods",
     status: "warehouse"
   },
 
