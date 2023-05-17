@@ -12,13 +12,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'merriweather';
-  src: url('./fonts/Merriweather-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 * {
   box-sizing: border-box;
 }
