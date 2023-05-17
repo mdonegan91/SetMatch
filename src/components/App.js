@@ -10,7 +10,7 @@ import Footer from './Footer';
 class App extends React.Component {
   state = {
     assets: {},
-    onSet: {},
+    // onSet: {},
     selectedTag: null
   };
   // using property = empty objects instead of constructor/super
@@ -19,15 +19,17 @@ class App extends React.Component {
     match: PropTypes.object.isRequired
   };
 
-  // lifecycle event. all the built in methods live in react.component, but if we make our own they're not bound my default. which makes it hard to reference a component inside of its own method
+  // lifecycle methd (like windowonload). all the built in methods live in react.component, but if we make our own they're not bound my default. which makes it hard to reference a component inside of its own method
   componentDidMount() {
     const { params } = this.props.match;
+    //destructured this to use later
     const localStorageRef = localStorage.getItem(params.setId);
-    if (localStorageRef) {
-      this.setState({ onSet: JSON.parse(localStorageRef) })
-    }
+    // if (localStorageRef) {
+    //   this.setState({ onSet: JSON.parse(localStorageRef) })
+    // }
     // reinstating local storage for componentDidUpdate ^^
     this.ref = base.syncState(`${params.setId}/assets`, {
+      // updating data for the specific setId, not the entire database
       context: this,
       state: 'assets'
     });
@@ -42,17 +44,14 @@ class App extends React.Component {
 
   // ^^ persisting onSet state in local storage !!
 
-
   // ^^ magic piece of code that syncs our state to firebase!
   // ref is reference to piece of data
-  // componentDidMount = life cycle method like windowOnLoad
-  // descrtuctured this
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
 
-  // ^^ stop listening for changes to avoid memory leak
+  // ^^ stop listening for changes to avoid memory leak ! if you refresh the page, the assets are re-instated into the set because they are now being persisted in the database
 
   addAsset = (asset) => {
     const assets = { ...this.state.assets };
@@ -61,7 +60,7 @@ class App extends React.Component {
     this.setState({ assets });
   };
 
-  //if your property and value are the same thing (fishes : fishes), you can just pass it once
+  //if your property and value are the same thing (assets : assets), you can just pass it once
 
   // date.now (miliseconds since 1970) was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path. used date.now WITH math random, could refactor
 
@@ -87,18 +86,18 @@ class App extends React.Component {
     this.setState({ assets: sampleAssets })
   };
 
-  checkOut = (key) => {
-    const onSet = { ...this.state.onSet };
-    onSet[key] = onSet[key] + 1 || 1;
-    // if onSet.fish1 exists, increment 1, otherwise, return 1
-    this.setState({ onSet });
-  }
+  // checkOut = (key) => {
+  //   const onSet = { ...this.state.onSet };
+  //   onSet[key] = onSet[key] + 1 || 1;
+  //   // if onSet.asset exists, increment 1, otherwise, return 1
+  //   this.setState({ onSet });
+  // }
 
-  removeFromCheckOut = (key) => {
-    const onSet = { ...this.state.onSet };
-    delete onSet[key];
-    this.setState({ onSet });
-  }
+  // removeFromCheckOut = (key) => {
+  //   const onSet = { ...this.state.onSet };
+  //   delete onSet[key];
+  //   this.setState({ onSet });
+  // }
 
   handleTagChange = (e) => {
     const selectedTag = e.target.value;
@@ -141,7 +140,7 @@ class App extends React.Component {
                   key={index}
                   index={index}
                   details={asset}
-                  checkOut={this.checkOut}
+                  // checkOut={this.checkOut}
                 />
               ))}
           </ul>

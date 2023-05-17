@@ -10,7 +10,7 @@ class Asset extends React.Component {
       status: PropTypes.string.isRequired,
       tag: PropTypes.string.isRequired
     }),
-    checkOut: PropTypes.func,
+    // checkOut: PropTypes.func,
   }
 
   // shape function that accepts an object to we can specify all the properties

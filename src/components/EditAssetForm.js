@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+//bidirectional data flow and live-state editing
+
 class EditAssetForm extends React.Component {
   static propTypes = {
     asset: PropTypes.shape({
@@ -13,6 +15,7 @@ class EditAssetForm extends React.Component {
     index: PropTypes.string.isRequired,
     updateAsset: PropTypes.func.isRequired
   };
+  
   handleChange = event => {
     // update the asset
     // take a copy of the current asset >>
@@ -24,6 +27,7 @@ class EditAssetForm extends React.Component {
     // sending these upstream to the updateAsset function
   };
   // computed property names. the value being updated will also be dynamic
+  // react doesn't like when you put state into an editable form 
 
   render() {
     return (
@@ -45,7 +49,7 @@ class EditAssetForm extends React.Component {
           <option value="artwork">Artwork</option>
           <option value="fixtures">Fixtures</option>
           <option value="softgoods">Soft Goods</option>
-          </select>
+        </select>
         <select
           type="text"
           name="status"
