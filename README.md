@@ -26,6 +26,20 @@ SetMatch uses the NoSQL cloud-hosted database Firebase for user authentication a
 ![mockup](/mockup1.png)
 ![mockup](/mockup2.png)
 
+## Component Diagram
+```
+Router.js
+├── SetPicker.js
+├── App.js
+│   ├── Header.js
+│   ├── Asset.js   
+│   ├── Footer.js   
+│   ├── Inventory.js   
+│   │   ├── Login.js
+│   │   ├── AddAssetForm.js
+│   │   ├── EditAssetForm.js
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -13,11 +13,13 @@ class App extends React.Component {
     onSet: {},
     selectedTag: null
   };
+  // using property = empty objects instead of constructor/super
 
   static propTypes = {
     match: PropTypes.object.isRequired
   };
 
+  // lifecycle event. all the built in methods live in react.component, but if we make our own they're not bound my default. which makes it hard to reference a component inside of its own method
   componentDidMount() {
     const { params } = this.props.match;
     const localStorageRef = localStorage.getItem(params.setId);
@@ -59,10 +61,12 @@ class App extends React.Component {
     this.setState({ assets });
   };
 
-  // was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path.
+  //if your property and value are the same thing (fishes : fishes), you can just pass it once
+
+  // date.now (miliseconds since 1970) was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path. used date.now WITH math random, could refactor
 
   updateAsset = (key, updatedAsset) => {
-    // copy of the current state
+    // copy of the current state with object spread
     const assets = { ...this.state.assets };
     // update that state
     assets[key] = updatedAsset;
@@ -78,7 +82,6 @@ class App extends React.Component {
     // ^^ so firebase can also delete it
     this.setState({ assets });
   }
-
 
   loadSampleAssets = () => {
     this.setState({ assets: sampleAssets })
@@ -116,7 +119,7 @@ class App extends React.Component {
           <Header className="tagline" tagline="All your assets in one place" />
           <br></br>
           <select name="tag" className="asset-filter" ref={this.tagRef} onChange={this.handleTagChange}>
-            <option value="">Show All</option> {/* Add an option to show all assets */}
+            <option value="">Tags: Show All</option>
             <option value="bigs">Bigs</option>
             <option value="smalls">Smalls</option>
             <option value="artwork">Artwork</option>
@@ -124,16 +127,27 @@ class App extends React.Component {
             <option value="softgoods">Soft Goods</option>
           </select>
           <br></br><br></br><br></br>
+          {/* should move this out into its own component */}
           <ul className="assets">
-            {filteredAssets.map((asset, index) => (
-              <Asset
-                key={index}
-                index={index}
-                details={asset}
-                checkOut={this.checkOut}
-              />
-            ))}
+            {filteredAssets
+              .map((asset, index) => ({
+                ...asset,
+                sortableDate: new Date(asset.date).getTime(),
+              }))
+              .sort((a, b) => b.sortableDate - a.sortableDate)
+              .reverse() // Reverse the order of the array
+              .map((asset, index) => (
+                <Asset
+                  key={index}
+                  index={index}
+                  details={asset}
+                  checkOut={this.checkOut}
+                />
+              ))}
           </ul>
+
+          {/* In this code, after sorting the filteredAssets array in descending order, we chain the reverse() method to reverse the order of the array. This will effectively display the assets from newest to oldest. */}
+
         </div>
         <Inventory
           addAsset={this.addAsset}

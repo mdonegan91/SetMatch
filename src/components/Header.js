@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//stateless functional component: 
+//stateless functional component because it only has a render method/implicit return: 
+// if you only have one argument you don't need the parens around props
 const Header = props => (
   <header className="top">
     <h1>Set Match</h1>

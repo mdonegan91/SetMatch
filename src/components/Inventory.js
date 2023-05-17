@@ -26,29 +26,27 @@ class Inventory extends React.Component {
       }
     });
   }
-    // this keeps our URL from heading to undefined
-    //loading is true would prevent that flash but leaving it out for now... 
+  // this keeps our URL from heading to undefined
+  //loading is true would prevent that flash but leaving it out for now... 
 
-authHandler = async authData => {
-  // look up current set in firebase database:
-  const set = await base.fetch(this.props.setId, { context: this });
-  console.log(set);
-  // claim it if there is no owner:
-  if (!set.owner) {
-    // save it as our own
-    await base.post(`${this.props.setId}/owner`, {
-      data: authData.user.uid
-    })
-  }
-  // set the state of the inventory component to reflect current user:
-  this.setState({
-    uid: authData.user.uid,
-    owner: set.owner || authData.user.uid
-  });
-  console.log(authData);
-};
-// figuring out who is currently logged in and who is the owner of the set. if they're the same people they can manage the set
-// fetch returns promise, add await to return set instead of promise
+  authHandler = async authData => {
+    // look up current set in firebase database:
+    const set = await base.fetch(this.props.setId, { context: this });
+    // claim it if there is no owner:
+    if (!set.owner) {
+      // save it as our own
+      await base.post(`${this.props.setId}/owner`, {
+        data: authData.user.uid
+      })
+    }
+    // set the state of the inventory component to reflect current user:
+    this.setState({
+      uid: authData.user.uid,
+      owner: set.owner || authData.user.uid
+    });
+  };
+  // figuring out who is currently logged in and who is the owner of the set. if they're the same people they can manage the set
+  // fetch returns promise, add await to return set instead of promise
 
   authenticate = provider => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -60,7 +58,6 @@ authHandler = async authData => {
   //dynamic auth provider to maybe incorporate multiple auths
 
   logout = async () => {
-    console.log('logging out');
     await firebase.auth().signOut();
     this.setState({ uid: null })
   }
@@ -88,17 +85,18 @@ authHandler = async authData => {
       <div className="inventory">
         {logout}
         <AddAssetForm addAsset={this.props.addAsset} />
-        {Object.keys(this.props.assets).map(key => (
-          <EditAssetForm
-            key={key}
-            index={key}
-            // passing index down here to use in EditAssetForm
-            asset={this.props.assets[key]}
-            updateAsset={this.props.updateAsset}
-            deleteAsset={this.props.deleteAsset}
-          // passing props down
-          />
-        ))}
+        {Object.keys(this.props.assets)
+          .sort((a, b) => b - a) // Sort the keys in descending order
+          .reverse() // Reverse the order of the keys
+          .map((key) => (
+            <EditAssetForm
+              key={key}
+              index={key}
+              asset={this.props.assets[key]}
+              updateAsset={this.props.updateAsset}
+              deleteAsset={this.props.deleteAsset}
+            />
+          ))}
         <button onClick={this.props.loadSampleAssets}>Load Sample Assets</button>
       </div>
     );

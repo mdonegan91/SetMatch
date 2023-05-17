@@ -47,7 +47,7 @@ class Asset extends React.Component {
             </span>
         </h3>
         <p>{desc}</p>
-        <button disabled={!isAvailable} onClick={() => this.props.checkOut(this.props.index)}>
+        <button style={{ cursor: 'default' }}>
           {buttonText}
         </button>
       </li>
