@@ -6,12 +6,14 @@ import Asset from './Asset';
 import sampleAssets from '../sample-assets';
 import base from '../base';
 import Footer from './Footer';
+import Filter from './Filter';
 
 class App extends React.Component {
   state = {
     assets: {},
     // onSet: {},
-    selectedTag: null
+    selectedTag: null,
+    selectedStatus: null
   };
   // using property = empty objects instead of constructor/super
 
@@ -78,7 +80,7 @@ class App extends React.Component {
     const assets = { ...this.state.assets }
     // update the state
     assets[key] = null;
-    // ^^ so firebase can also delete it
+    // ^^ set to null so firebase can also delete it
     this.setState({ assets });
   }
 
@@ -86,81 +88,74 @@ class App extends React.Component {
     this.setState({ assets: sampleAssets })
   };
 
-  // checkOut = (key) => {
-  //   const onSet = { ...this.state.onSet };
-  //   onSet[key] = onSet[key] + 1 || 1;
-  //   // if onSet.asset exists, increment 1, otherwise, return 1
-  //   this.setState({ onSet });
-  // }
-
-  // removeFromCheckOut = (key) => {
-  //   const onSet = { ...this.state.onSet };
-  //   delete onSet[key];
-  //   this.setState({ onSet });
-  // }
-
   handleTagChange = (e) => {
     const selectedTag = e.target.value;
     this.setState({ selectedTag });
   };
 
+  handleStatusChange = (e) => {
+    const selectedStatus = e.target.value;
+    this.setState({ selectedStatus });
+  };
+
   render() {
-    const { selectedTag } = this.state;
+    const { selectedTag, selectedStatus } = this.state;
     const filteredAssets = Object.values(this.state.assets).filter(asset => {
-      if (!selectedTag) {
-        return true; // Show all assets if no tag is selected
+      if (!selectedTag && !selectedStatus) {
+        return true; // Show all assets if no tag or status is selected
       }
-      return asset.tag.toLowerCase() === selectedTag.toLowerCase(); // Case-insensitive comparison
+      if (selectedTag && selectedStatus) {
+        return (
+          asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
+          asset.status.toLowerCase() === selectedStatus.toLowerCase()
+        );
+      }
+      if (selectedTag) {
+        return asset.tag.toLowerCase() === selectedTag.toLowerCase();
+      }
+      if (selectedStatus) {
+        return asset.status.toLowerCase() === selectedStatus.toLowerCase();
+      }
     });
+
     return (
       <div className="game-set-match">
         <div className="love-all">
-          <Header className="tagline" tagline="All your assets in one place" />
+          <Header className="tagline" tagline="All of your assets in one place" />
           <br></br>
-          <select name="tag" className="asset-filter" ref={this.tagRef} onChange={this.handleTagChange}>
-            <option value="">Tags: Show All</option>
-            <option value="bigs">Bigs</option>
-            <option value="smalls">Smalls</option>
-            <option value="artwork">Artwork</option>
-            <option value="fixtures">Fixtures</option>
-            <option value="softgoods">Soft Goods</option>
-          </select>
-          <br></br><br></br><br></br>
-          {/* should move this out into its own component */}
+          <Filter
+            selectedTag={selectedTag}
+            selectedStatus={selectedStatus}
+            handleTagChange={this.handleTagChange}
+            handleStatusChange={this.handleStatusChange}
+          />
           <ul className="assets">
             {filteredAssets
-              .map((asset, index) => ({
-                ...asset,
-                sortableDate: new Date(asset.date).getTime(),
-              }))
-              .sort((a, b) => b.sortableDate - a.sortableDate)
-              .reverse() // Reverse the order of the array
+              .reverse() // reverse the order so it's newest to oldest
               .map((asset, index) => (
                 <Asset
                   key={index}
                   index={index}
                   details={asset}
-                  // checkOut={this.checkOut}
                 />
               ))}
           </ul>
-
-          {/* In this code, after sorting the filteredAssets array in descending order, we chain the reverse() method to reverse the order of the array. This will effectively display the assets from newest to oldest. */}
-
         </div>
         <Inventory
           addAsset={this.addAsset}
           updateAsset={this.updateAsset}
           deleteAsset={this.deleteAsset}
           loadSampleAssets={this.loadSampleAssets}
-          assets={this.state.assets}
+          assets={filteredAssets} // Pass filteredAssets instead of this.state.assets
           setId={this.props.match.params.setId}
+          // this comes from react router
           className="inventory"
         />
         <Footer />
       </div>
     );
   }
+
 }
 
 export default App;

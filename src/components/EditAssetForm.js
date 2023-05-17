@@ -15,7 +15,7 @@ class EditAssetForm extends React.Component {
     index: PropTypes.string.isRequired,
     updateAsset: PropTypes.func.isRequired
   };
-  
+
   handleChange = event => {
     // update the asset
     // take a copy of the current asset >>
@@ -73,6 +73,7 @@ class EditAssetForm extends React.Component {
           value={this.props.asset.image}
         />
         <button onClick={() => this.props.deleteAsset(this.props.index)}>Remove Asset</button>
+        {/* inline function */}
       </div>
     );
   }

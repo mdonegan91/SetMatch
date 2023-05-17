@@ -9,7 +9,7 @@ class SetPicker extends React.Component {
     history: PropTypes.object.isRequired
   };
 
-    // instead of using a constructor, instead of declaring method on the component, declared a property set to arrow function. allows us to bind the value of this to setpicker component:
+  // instead of using a constructor, instead of declaring method on the component, declared a property set to arrow function. allows us to bind the value of this to setpicker component:
 
   goToSet = (e) => {
     e.preventDefault();

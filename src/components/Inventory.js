@@ -34,7 +34,7 @@ class Inventory extends React.Component {
     const set = await base.fetch(this.props.setId, { context: this });
     // claim it if there is no owner:
     if (!set.owner) {
-      // save it as our own
+      // save it as our own, if you created it its yours
       await base.post(`${this.props.setId}/owner`, {
         data: authData.user.uid
       })
@@ -55,52 +55,54 @@ class Inventory extends React.Component {
       .signInWithPopup(authProvider)
       .then(this.authHandler);
   };
-  //dynamic auth provider to maybe incorporate multiple auths
+  //dynamic auth provider to maybe incorporate more auth providers
 
   logout = async () => {
     await firebase.auth().signOut();
     this.setState({ uid: null })
   }
-  // async method so they can actually sign out of firebase
+  // async method so they can actually sign out of firebase (with await)
   // and clear state
 
   render() {
-    // return <Login authenticate={this.authenticate}/>;
-    const logout = <button onClick={this.logout}>Log Out</button>;
-    // 1. Check if they are logged in
-    if (!this.state.uid) {
-      return <Login authenticate={this.authenticate} />;
-    }
-
-    // 2. check if they are not the owner of the store
-    if (this.state.uid !== this.state.owner) {
-      return (
-        <div>
-          <p>Sorry you are not the owner!</p>
-          {logout}
-        </div>
-      );
-    }
+    const { selectedTag, selectedStatus } = this.state;
+    const filteredAssets = Object.values(this.props.assets).filter((asset) => {
+      if (!selectedTag && !selectedStatus) {
+        return true; // Show all assets if no tag or status is selected
+      }
+      if (selectedTag && selectedStatus) {
+        return (
+          asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
+          asset.status.toLowerCase() === selectedStatus.toLowerCase()
+        );
+      }
+      if (selectedTag) {
+        return asset.tag.toLowerCase() === selectedTag.toLowerCase();
+      }
+      if (selectedStatus) {
+        return asset.status.toLowerCase() === selectedStatus.toLowerCase();
+      }
+    });
+  
     return (
       <div className="inventory">
-        {logout}
-        <AddAssetForm addAsset={this.props.addAsset} />
-        {Object.keys(this.props.assets)
-          .sort((a, b) => b - a) // Sort the keys in descending order
-          .reverse() // Reverse the order of the keys
-          .map((key) => (
+        {/* ... */}
+        {filteredAssets
+          .reverse() // Reverse the order of the filtered assets
+          .map((asset, index) => (
             <EditAssetForm
-              key={key}
-              index={key}
-              asset={this.props.assets[key]}
+              key={index}
+              index={index}
+              asset={asset}
               updateAsset={this.props.updateAsset}
               deleteAsset={this.props.deleteAsset}
             />
           ))}
-        <button onClick={this.props.loadSampleAssets}>Load Sample Assets</button>
+        {/* ... */}
       </div>
     );
   }
+  
 }
 
 export default Inventory;

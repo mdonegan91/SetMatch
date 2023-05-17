@@ -10,10 +10,9 @@ class Asset extends React.Component {
       status: PropTypes.string.isRequired,
       tag: PropTypes.string.isRequired
     }),
-    // checkOut: PropTypes.func,
   }
-
-  // shape function that accepts an object to we can specify all the properties
+  // shape function that accepts an object so we can specify all the properties
+  // checks that the object you are sending it will have all the properties with those types
 
   render() {
     const { image, name, tag, desc, status } = this.props.details;
@@ -44,7 +43,7 @@ class Asset extends React.Component {
           {name}
           <span className="tag">
             {tag}
-            </span>
+          </span>
         </h3>
         <p>{desc}</p>
         <button style={{ cursor: 'default' }}>
