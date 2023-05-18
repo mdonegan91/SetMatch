@@ -5,7 +5,7 @@
 #### By _Molly Donegan_
 
 ## Description
-SetMatch uses the NoSQL cloud-hosted database Firebase for user authentication and holding user data and information about assets on set. Users have the ability to create accounts and create, read, update & delete and filter asset information.
+SetMatch uses the NoSQL cloud-hosted database Firebase for user authentication and holding user data and information about assets on set. Users have the ability to create accounts and create, read, update, delete, search & filter asset information.
 
 #### 🎥 [Deployed Site](https://6466664f05d69637ea7bf1c0--setmatch.netlify.app)
 #### ⭐[Technologies Used](#technologies-used)
