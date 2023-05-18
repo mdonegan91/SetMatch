@@ -57,6 +57,8 @@ git clone https://github.com/mdonegan91/SetMatch
 5. Enjoy!
 
 ## Known Bugs
+* GitHub authentication
+
 #### Works in progress:
 * Error handling, adding a Not Found route
 * Sort assets and inventory simultaneously 
