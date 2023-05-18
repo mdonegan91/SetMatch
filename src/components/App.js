@@ -110,8 +110,7 @@ class App extends React.Component {
   
   render() {
     const { selectedTag, selectedStatus } = this.state;
-    const reversedAssets = Object.values(this.state.assets).reverse();
-    const filteredAssets = reversedAssets.filter(asset => {
+    const filteredAssets = Object.values(this.state.assets).filter(asset => {
       if (!selectedTag && !selectedStatus) {
         return true; // Show all assets if no tag or status is selected
       }
@@ -129,6 +128,8 @@ class App extends React.Component {
       }
     });
   
+    const reversedAssets = filteredAssets.slice().reverse();
+  
     return (
       <div className="game-set-match">
         <div className="love-all">
@@ -141,7 +142,7 @@ class App extends React.Component {
             handleStatusChange={this.handleStatusChange}
           />
           <ul className="assets">
-            {filteredAssets.map((asset, index) => (
+            {reversedAssets.map((asset, index) => (
               <Asset
                 key={index}
                 index={index}
@@ -163,8 +164,8 @@ class App extends React.Component {
         <Footer />
       </div>
     );
-  }  
-
+  }
+  
 }
 
 export default App;
