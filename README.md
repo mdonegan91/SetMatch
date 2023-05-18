@@ -58,7 +58,9 @@ git clone https://github.com/mdonegan91/SetMatch
 
 ## Known Bugs
 #### Works in progress:
-* Filter functionality
+* Error handling, adding a Not Found route
+* Sort assets and inventory simultaneously 
+* User created status tags
 
 ### License
 
