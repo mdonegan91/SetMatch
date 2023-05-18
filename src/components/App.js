@@ -102,14 +102,15 @@ class App extends React.Component {
     const selectedTag = e.target.value;
     this.setState({ selectedTag });
   };
-  
+
   handleStatusChange = (e) => {
     const selectedStatus = e.target.value;
     this.setState({ selectedStatus });
   };
-  
+
   render() {
     const { selectedTag, selectedStatus } = this.state;
+
     const filteredAssets = Object.values(this.state.assets).filter(asset => {
       if (!selectedTag && !selectedStatus) {
         return true; // Show all assets if no tag or status is selected
@@ -127,17 +128,19 @@ class App extends React.Component {
         return asset.status.toLowerCase() === selectedStatus.toLowerCase();
       }
     });
-  
+
+
+
     const reversedAssets = filteredAssets.slice().reverse();
-  
+
     return (
       <div className="game-set-match">
         <div className="love-all">
           <Header className="tagline" tagline="All of your assets in one place" />
           <br></br>
           <Filter
-            selectedTag={selectedTag}
-            selectedStatus={selectedStatus}
+            selectedTag={this.state.selectedTag}
+            selectedStatus={this.state.selectedStatus}
             handleTagChange={this.handleTagChange}
             handleStatusChange={this.handleStatusChange}
           />
@@ -165,7 +168,7 @@ class App extends React.Component {
       </div>
     );
   }
-  
+
 }
 
 export default App;

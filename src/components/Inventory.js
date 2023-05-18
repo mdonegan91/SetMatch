@@ -84,35 +84,34 @@ authHandler = async authData => {
     }
   
     // Filter the inventory items based on selectedTag and selectedStatus
-    const filteredInventory = Object.keys(assets)
-      .filter(key => {
-        const asset = assets[key];
-        if (!selectedTag && !selectedStatus) {
-          return true; // Show all inventory items if no tag or status is selected
-        }
-        if (selectedTag && selectedStatus) {
-          return (
-            asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
-            asset.status.toLowerCase() === selectedStatus.toLowerCase()
-          );
-        }
-        if (selectedTag) {
-          return asset.tag.toLowerCase() === selectedTag.toLowerCase();
-        }
-        if (selectedStatus) {
-          return asset.status.toLowerCase() === selectedStatus.toLowerCase();
-        }
-        return false;
-      })
-      .map(key => (
-        <EditAssetForm
-          key={key}
-          index={key}
-          asset={assets[key]}
-          updateAsset={this.props.updateAsset}
-          deleteAsset={this.props.deleteAsset}
-        />
-      ));
+    const filteredInventory = Object.keys(assets).filter((key) => {
+      const asset = assets[key];
+      if (!selectedTag && !selectedStatus) {
+        return true; // Show all inventory items if no tag or status is selected
+      }
+      if (selectedTag && selectedStatus) {
+        return (
+          asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
+          asset.status.toLowerCase() === selectedStatus.toLowerCase()
+        );
+      }
+      if (selectedTag) {
+        return asset.tag.toLowerCase() === selectedTag.toLowerCase();
+      }
+      if (selectedStatus) {
+        return asset.status.toLowerCase() === selectedStatus.toLowerCase();
+      }
+      return false;
+    }).map((key) => (
+      <EditAssetForm
+        key={key}
+        index={key}
+        asset={assets[key]}
+        updateAsset={this.props.updateAsset}
+        deleteAsset={this.props.deleteAsset}
+      />
+    ));
+    
   
     return (
       <div className="inventory">

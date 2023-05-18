@@ -14,7 +14,12 @@ class Filter extends React.Component {
 
     return (
       <div style={{ textAlign: 'right' }}>
-        <select name="tag" className="asset-filter" value={selectedTag} onChange={handleTagChange}>
+        <select
+  name="tag"
+  className="asset-filter"
+  value={this.props.selectedTag}
+  onChange={this.props.handleTagChange}
+>
           <option value="">Tags: Show All</option>
           <option value="bigs">Bigs</option>
           <option value="smalls">Smalls</option>
@@ -23,7 +28,12 @@ class Filter extends React.Component {
           <option value="softgoods">Soft Goods</option>
         </select>
         &nbsp;&nbsp;
-        <select name="status" className="asset-filter" value={selectedStatus} onChange={handleStatusChange}>
+        <select
+  name="status"
+  className="asset-filter"
+  value={this.props.selectedStatus}
+  onChange={this.props.handleStatusChange}
+>
           <option value="">Status: Show All</option>
           <option value="warehouse">Warehouse</option>
           <option value="shop">Shop</option>
