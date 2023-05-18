@@ -11,12 +11,9 @@ class Asset extends React.Component {
       tag: PropTypes.string.isRequired
     }),
   }
-  // shape function that accepts an object so we can specify all the properties
-  // checks that the object you are sending it will have all the properties with those types
 
   render() {
     const { image, name, tag, desc, status } = this.props.details;
-    // const isAvailable = status === "available";
 
     let buttonText = "";
     switch (status) {

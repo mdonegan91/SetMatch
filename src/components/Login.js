@@ -11,9 +11,6 @@ const Login = props => (
   </nav>
 );
 
-// stateless functional component ^ there is no this.props its just props
-// had to set up authentication in github.com/settings -- applications -- new, grab callback url, register app, grab client id and client secret for firebase 
-
 Login.propTypes = {
   authenticate: PropTypes.func.isRequired
 };

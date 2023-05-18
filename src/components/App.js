@@ -11,27 +11,18 @@ import Filter from './Filter';
 class App extends React.Component {
   state = {
     assets: {},
-    // onSet: {},
     selectedTag: null,
     selectedStatus: null
   };
-  // using property = empty objects instead of constructor/super
 
   static propTypes = {
     match: PropTypes.object.isRequired
   };
 
-  // lifecycle methd (like windowonload). all the built in methods live in react.component, but if we make our own they're not bound my default. which makes it hard to reference a component inside of its own method
   componentDidMount() {
     const { params } = this.props.match;
-    //destructured this to use later
     const localStorageRef = localStorage.getItem(params.setId);
-    // if (localStorageRef) {
-    //   this.setState({ onSet: JSON.parse(localStorageRef) })
-    // }
-    // reinstating local storage for componentDidUpdate ^^
     this.ref = base.syncState(`${params.setId}/assets`, {
-      // updating data for the specific setId, not the entire database
       context: this,
       state: 'assets'
     });
@@ -44,16 +35,9 @@ class App extends React.Component {
     );
   }
 
-  // ^^ persisting onSet state in local storage !!
-
-  // ^^ magic piece of code that syncs our state to firebase!
-  // ref is reference to piece of data
-
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-
-  // ^^ stop listening for changes to avoid memory leak ! if you refresh the page, the assets are re-instated into the set because they are now being persisted in the database
 
   addAsset = (asset) => {
     const assets = { ...this.state.assets };
@@ -62,16 +46,9 @@ class App extends React.Component {
     this.setState({ assets });
   };
 
-  //if your property and value are the same thing (assets : assets), you can just pass it once
-
-  // date.now (miliseconds since 1970) was not actually generating a unique key based on the current timestamp. Instead, it was setting the key to the string literal "assetfunction now() { [native code] }", which is not a valid Firebase Realtime Database path. used date.now WITH math random, could refactor
-
   updateAsset = (key, updatedAsset) => {
-    // copy of the current state with object spread
     const assets = { ...this.state.assets };
-    // update that state
     assets[key] = updatedAsset;
-    // set that to state
     this.setState({ assets });
   }
 
@@ -84,19 +61,6 @@ class App extends React.Component {
   loadSampleAssets = () => {
     this.setState({ assets: sampleAssets })
   };
-
-  // checkOut = (key) => {
-  //   const onSet = { ...this.state.onSet };
-  //   onSet[key] = onSet[key] + 1 || 1;
-  //   // if onSet.asset exists, increment 1, otherwise, return 1
-  //   this.setState({ onSet });
-  // }
-
-  // removeFromCheckOut = (key) => {
-  //   const onSet = { ...this.state.onSet };
-  //   delete onSet[key];
-  //   this.setState({ onSet });
-  // }
 
   handleTagChange = (e) => {
     const selectedTag = e.target.value;
@@ -113,7 +77,7 @@ class App extends React.Component {
 
     const filteredAssets = Object.values(this.state.assets).filter(asset => {
       if (!selectedTag && !selectedStatus) {
-        return true; // Show all assets if no tag or status is selected
+        return true;
       }
       if (selectedTag && selectedStatus) {
         return (

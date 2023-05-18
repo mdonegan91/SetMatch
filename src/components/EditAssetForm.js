@@ -14,16 +14,12 @@ class EditAssetForm extends React.Component {
     updateAsset: PropTypes.func.isRequired
   };
   handleChange = event => {
-    // update the asset
-    // take a copy of the current asset >>
     const updatedAsset = {
       ...this.props.asset,
       [event.currentTarget.name]: event.currentTarget.value
     };
     this.props.updateAsset(this.props.index, updatedAsset);
-    // sending these upstream to the updateAsset function
   };
-  // computed property names. the value being updated will also be dynamic
 
   render() {
     return (

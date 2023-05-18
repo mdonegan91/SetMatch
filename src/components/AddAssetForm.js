@@ -23,7 +23,6 @@ class AddAssetForm extends React.Component {
     };
     this.props.addAsset(asset);
     e.currentTarget.reset();
-    // reset method to clear form
   };
 
   render() {
