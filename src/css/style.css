@@ -72,7 +72,7 @@ header.top h3 {
 .game-set-match {
   display: flex;
   height: 85vh;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   margin-top: 5vh;
 }
@@ -175,6 +175,15 @@ ul {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: inline-block;
+}
+
+.inventory .asset-filter {
+  width: 100%;
+  color: white;
+}
+
+.inventory .asset-filter::placeholder {
+  color: rgb(185, 185, 185);
 }
 
 .love-all-asset {
