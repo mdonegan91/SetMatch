@@ -72,7 +72,7 @@ class Inventory extends React.Component {
     if (uid !== owner) {
       return (
         <div>
-          <p>Sorry, you are not the owner!</p>
+          <p>Welcome to set!</p>
           {logout}
         </div>
       );
