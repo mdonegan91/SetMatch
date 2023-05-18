@@ -20,8 +20,6 @@ const base = Rebase.createClass(firebaseApp.database());
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-// named export
 export { firebaseApp };
 
-// default export
 export default base;
