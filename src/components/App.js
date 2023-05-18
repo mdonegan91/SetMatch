@@ -76,31 +76,42 @@ class App extends React.Component {
   }
 
   deleteAsset = (key) => {
-    // take copy of state
-    const assets = { ...this.state.assets }
-    // update the state
+    const assets = { ...this.state.assets };
     assets[key] = null;
-    // ^^ set to null so firebase can also delete it
     this.setState({ assets });
-  }
+  };
 
   loadSampleAssets = () => {
     this.setState({ assets: sampleAssets })
   };
 
+  // checkOut = (key) => {
+  //   const onSet = { ...this.state.onSet };
+  //   onSet[key] = onSet[key] + 1 || 1;
+  //   // if onSet.asset exists, increment 1, otherwise, return 1
+  //   this.setState({ onSet });
+  // }
+
+  // removeFromCheckOut = (key) => {
+  //   const onSet = { ...this.state.onSet };
+  //   delete onSet[key];
+  //   this.setState({ onSet });
+  // }
+
   handleTagChange = (e) => {
     const selectedTag = e.target.value;
     this.setState({ selectedTag });
   };
-
+  
   handleStatusChange = (e) => {
     const selectedStatus = e.target.value;
     this.setState({ selectedStatus });
   };
-
+  
   render() {
     const { selectedTag, selectedStatus } = this.state;
-    const filteredAssets = Object.values(this.state.assets).filter(asset => {
+    const reversedAssets = Object.values(this.state.assets).reverse();
+    const filteredAssets = reversedAssets.filter(asset => {
       if (!selectedTag && !selectedStatus) {
         return true; // Show all assets if no tag or status is selected
       }
@@ -117,7 +128,7 @@ class App extends React.Component {
         return asset.status.toLowerCase() === selectedStatus.toLowerCase();
       }
     });
-
+  
     return (
       <div className="game-set-match">
         <div className="love-all">
@@ -130,15 +141,14 @@ class App extends React.Component {
             handleStatusChange={this.handleStatusChange}
           />
           <ul className="assets">
-            {filteredAssets
-              .reverse() // reverse the order so it's newest to oldest
-              .map((asset, index) => (
-                <Asset
-                  key={index}
-                  index={index}
-                  details={asset}
-                />
-              ))}
+            {filteredAssets.map((asset, index) => (
+              <Asset
+                key={index}
+                index={index}
+                details={asset}
+                selectedTag={asset.tag}
+              />
+            ))}
           </ul>
         </div>
         <Inventory
@@ -146,15 +156,14 @@ class App extends React.Component {
           updateAsset={this.updateAsset}
           deleteAsset={this.deleteAsset}
           loadSampleAssets={this.loadSampleAssets}
-          assets={filteredAssets} // Pass filteredAssets instead of this.state.assets
+          assets={this.state.assets}
           setId={this.props.match.params.setId}
-          // this comes from react router
           className="inventory"
         />
         <Footer />
       </div>
     );
-  }
+  }  
 
 }
 

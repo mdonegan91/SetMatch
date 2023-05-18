@@ -16,7 +16,7 @@ class Asset extends React.Component {
 
   render() {
     const { image, name, tag, desc, status } = this.props.details;
-    const isAvailable = status === "available";
+    // const isAvailable = status === "available";
 
     let buttonText = "";
     switch (status) {

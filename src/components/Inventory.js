@@ -26,27 +26,27 @@ class Inventory extends React.Component {
       }
     });
   }
-  // this keeps our URL from heading to undefined
-  //loading is true would prevent that flash but leaving it out for now... 
+    // this keeps our URL from heading to undefined
+    //loading is true would prevent that flash but leaving it out for now... 
 
-  authHandler = async authData => {
-    // look up current set in firebase database:
-    const set = await base.fetch(this.props.setId, { context: this });
-    // claim it if there is no owner:
-    if (!set.owner) {
-      // save it as our own, if you created it its yours
-      await base.post(`${this.props.setId}/owner`, {
-        data: authData.user.uid
-      })
-    }
-    // set the state of the inventory component to reflect current user:
-    this.setState({
-      uid: authData.user.uid,
-      owner: set.owner || authData.user.uid
-    });
-  };
-  // figuring out who is currently logged in and who is the owner of the set. if they're the same people they can manage the set
-  // fetch returns promise, add await to return set instead of promise
+authHandler = async authData => {
+  // look up current set in firebase database:
+  const set = await base.fetch(this.props.setId, { context: this });
+  // claim it if there is no owner:
+  if (!set.owner) {
+    // save it as our own
+    await base.post(`${this.props.setId}/owner`, {
+      data: authData.user.uid
+    })
+  }
+  // set the state of the inventory component to reflect current user:
+  this.setState({
+    uid: authData.user.uid,
+    owner: set.owner || authData.user.uid
+  });
+};
+// figuring out who is currently logged in and who is the owner of the set. if they're the same people they can manage the set
+// fetch returns promise, add await to return set instead of promise
 
   authenticate = provider => {
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
@@ -55,50 +55,71 @@ class Inventory extends React.Component {
       .signInWithPopup(authProvider)
       .then(this.authHandler);
   };
-  //dynamic auth provider to maybe incorporate more auth providers
+  //dynamic auth provider to maybe incorporate multiple auths
 
   logout = async () => {
+    console.log('logging out');
     await firebase.auth().signOut();
     this.setState({ uid: null })
   }
-  // async method so they can actually sign out of firebase (with await)
+  // async method so they can actually sign out of firebase
   // and clear state
 
   render() {
-    const { selectedTag, selectedStatus } = this.state;
-    const filteredAssets = Object.values(this.props.assets).filter((asset) => {
-      if (!selectedTag && !selectedStatus) {
-        return true; // Show all assets if no tag or status is selected
-      }
-      if (selectedTag && selectedStatus) {
-        return (
-          asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
-          asset.status.toLowerCase() === selectedStatus.toLowerCase()
-        );
-      }
-      if (selectedTag) {
-        return asset.tag.toLowerCase() === selectedTag.toLowerCase();
-      }
-      if (selectedStatus) {
-        return asset.status.toLowerCase() === selectedStatus.toLowerCase();
-      }
-    });
+    const { assets, selectedTag, selectedStatus } = this.props;
+    const { uid, owner } = this.state;
+    const logout = <button onClick={this.logout}>Log Out</button>;
+  
+    if (!uid) {
+      return <Login authenticate={this.authenticate} />;
+    }
+  
+    if (uid !== owner) {
+      return (
+        <div>
+          <p>Sorry, you are not the owner!</p>
+          {logout}
+        </div>
+      );
+    }
+  
+    // Filter the inventory items based on selectedTag and selectedStatus
+    const filteredInventory = Object.keys(assets)
+      .filter(key => {
+        const asset = assets[key];
+        if (!selectedTag && !selectedStatus) {
+          return true; // Show all inventory items if no tag or status is selected
+        }
+        if (selectedTag && selectedStatus) {
+          return (
+            asset.tag.toLowerCase() === selectedTag.toLowerCase() &&
+            asset.status.toLowerCase() === selectedStatus.toLowerCase()
+          );
+        }
+        if (selectedTag) {
+          return asset.tag.toLowerCase() === selectedTag.toLowerCase();
+        }
+        if (selectedStatus) {
+          return asset.status.toLowerCase() === selectedStatus.toLowerCase();
+        }
+        return false;
+      })
+      .map(key => (
+        <EditAssetForm
+          key={key}
+          index={key}
+          asset={assets[key]}
+          updateAsset={this.props.updateAsset}
+          deleteAsset={this.props.deleteAsset}
+        />
+      ));
   
     return (
       <div className="inventory">
-        {/* ... */}
-        {filteredAssets
-          .reverse() // Reverse the order of the filtered assets
-          .map((asset, index) => (
-            <EditAssetForm
-              key={index}
-              index={index}
-              asset={asset}
-              updateAsset={this.props.updateAsset}
-              deleteAsset={this.props.deleteAsset}
-            />
-          ))}
-        {/* ... */}
+        {logout}
+        <AddAssetForm addAsset={this.props.addAsset} />
+        {filteredInventory}
+        <button onClick={this.props.loadSampleAssets}>Load Sample Assets</button>
       </div>
     );
   }

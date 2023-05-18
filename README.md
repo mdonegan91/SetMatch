@@ -34,6 +34,7 @@ Router.js
 │   ├── Header.js
 │   ├── Asset.js   
 │   ├── Footer.js   
+│   ├── Filter.js   
 │   ├── Inventory.js   
 │   │   ├── Login.js
 │   │   ├── AddAssetForm.js
